@@ -1,9 +1,18 @@
 import React from 'react' 
 
-const Accounts = (props) => {
+const Accounts = ({accounts}) => {
+  // console.log(accounts)
   return (
     <div>
-      Accounts
+      {accounts.map(account => {
+        return (
+          <li key={account.id}>
+            <h3>{account.accountname}</h3>
+            <p>{account.address}</p>
+          </li>
+          
+        )
+      })}
     </div>
   )
 }

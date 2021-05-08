@@ -7,7 +7,6 @@ import Accounts from '../components/Accounts'
 class AccountsContainer extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
     this.props.fetchAccounts()
   }
   
@@ -16,7 +15,7 @@ class AccountsContainer extends React.Component {
       <div>
         AccountsContainer
         <AccountInput />
-        <Accounts />
+        <Accounts accounts={this.props.accounts}/>
       </div>
     )
   }
