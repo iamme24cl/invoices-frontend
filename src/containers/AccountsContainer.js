@@ -13,7 +13,6 @@ class AccountsContainer extends React.Component {
   render() {
     return (
       <div>
-        AccountsContainer
         <AccountInput />
         <Accounts accounts={this.props.accounts}/>
       </div>

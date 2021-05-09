@@ -5,6 +5,6 @@ export function fetchAccounts() {
     .then(accounts => dispatch({
       type: 'FETCH_ACCOUNTS',
       payload: accounts
-    }))
+    }))    
   }
 }
