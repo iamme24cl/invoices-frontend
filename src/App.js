@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import {connect} from 'react-redux'
 // import {fetchAccounts} from './actions/fetchAccounts'
 import AccountsContainer from './containers/AccountsContainer'
@@ -9,7 +10,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
+      <div className="App container">
        <AccountsContainer />
       </div>
     );

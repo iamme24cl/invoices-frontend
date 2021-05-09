@@ -30,14 +30,14 @@ class AccountInput extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="form-group">
           <label>Account Name</label><br />
-          <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange}/><br/>
+          <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/><br/>
           <label>Password</label><br/>
-          <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange}/><br/>
+          <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/><br/>
           <label>Address</label><br/>
-          <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange}/><br/><br/>
-          <input type="submit" />
+          <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange} className="form-control"/><br/><br/>
+          <input type="submit" className="btn btn-primary"/>
         </form>
       </div>
     )
