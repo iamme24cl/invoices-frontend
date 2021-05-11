@@ -1,4 +1,5 @@
 import React from 'react' 
+import Account from './Account'
 
 const Accounts = ({accounts}) => {
   // console.log(accounts)
@@ -6,11 +7,9 @@ const Accounts = ({accounts}) => {
     <div>
       {accounts.map(account => {
         return (
-          <li key={account.id}>
-            <h3>{account.accountname}</h3>
-            <p>{account.address}</p>
-          </li>
-          
+          <div key={account.id}>
+            <Account account={account}/>
+          </div>
         )
       })}
     </div>
