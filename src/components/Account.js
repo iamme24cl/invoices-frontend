@@ -2,12 +2,17 @@ import React from 'react'
 
 
 const Account = (props) => {
-  // console.log(props.account.invoices)
+  console.log(props)
+  // let account = props.accounts[props.match.params.id - 1]
+  let account = props.accounts.filter(account => account.id == props.match.params.id)[0]
+  console.log(account)
+  
   return (
-    <li>
-      <h2>{props.account.accountname}</h2>
-      <p>{props.account.address}</p>
-    </li>
+    <div>
+      <h1>{account ? account.accountname: null}</h1>
+      <p>{account ? account.address: null}</p>
+
+    </div>
   )
 }
 
