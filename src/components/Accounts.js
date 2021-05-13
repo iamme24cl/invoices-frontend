@@ -8,7 +8,7 @@ const Accounts = ({accounts}) => {
       {accounts.map(account => {
         return (
           <li key={account.id}>
-            <Link to={`/accounts/${account.id}`}>{account.accountname}</Link>
+            <Link to={`/accounts/${account.id}`}>{account.name}</Link>
           </li>
         )
       })}

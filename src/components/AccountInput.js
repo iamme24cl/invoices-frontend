@@ -3,11 +3,13 @@ import {connect} from 'react-redux'
 import {addAccount} from '../actions/addAccount'
 
 class AccountInput extends React.Component {
-
-  state = {
-    accountname: '',
-    password: '',
-    address: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      password: '',
+      address: ''
+    }
   }
 
   handleChange = (event) => {
@@ -21,7 +23,7 @@ class AccountInput extends React.Component {
     event.preventDefault();
     this.props.addAccount(this.state)
     this.setState({
-      accountname: '',
+      name: '',
       password: '',
       address: ''
     })
@@ -32,7 +34,7 @@ class AccountInput extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit} className="form-group">
           <label>Account Name</label><br />
-          <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/><br/>
+          <input type="text" placeholder="User Name" value={this.state.name} name="name" onChange={this.handleChange} className="form-control"/><br/>
           <label>Password</label><br/>
           <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/><br/>
           <label>Address</label><br/>
