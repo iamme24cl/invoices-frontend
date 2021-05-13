@@ -8,40 +8,71 @@ class InvoiceInput extends React.Component {
     super(props);
     this.state = {
       description: "",
-      price: "",
-      quantity: "",
       payment_due: "",
       payment_terms: "",
       status: "",
       client_name: "",
       client_email: "",
-      client_address: ""
+      client_address: "",
+      items_attributes: [
+        {
+          name: "",
+          price: "",
+          quantity: ""
+        }
+      ]
     }
+    this.addItem = this.addItem.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange = (event) => {
-    this.setState({ 
-      [event.target.name]: event.target.value
-    })
+    if(["name", "price", "quantity"].includes(event.target.name)) {
+      let items_attributes = [...this.state.items_attributes]
+      items_attributes[event.target.dataset.id][event.target.name] = event.target.value
+      this.setState({items_attributes}/*, () => console.log(this.state.items_attributes)*/)
+    } else {
+      this.setState({ 
+        [event.target.name]: event.target.value
+      })
+    }
   }
 
   handleSubmit = (event) => {
+    // debugger
     event.preventDefault();
     this.props.addInvoice(this.state, this.props.account.id)
     this.setState({
       description: "",
-      price: "",
-      quantity: "",
       payment_due: "",
       payment_terms: "",
       status: "",
       client_name: "",
       client_email: "",
-      client_address: ""
+      client_address: "",
+      items_attributes: [
+        {
+          name: "",
+          price: "",
+          quantity: ""
+        }
+      ]
     })
+    event.target.reset()
   }
 
+  addItem = (event) => {
+    event.preventDefault()
+    this.setState((prevState) => ({
+      items_attributes: [...prevState.items_attributes, {name: "", price: "", quantity: ""}]
+    }))
+  }
+
+  
+
   render() {
+    let items = this.state.items_attributes;
 
     return (
       <div>
@@ -54,21 +85,7 @@ class InvoiceInput extends React.Component {
             name="description" 
             className="form-control" 
           />
-          <label>Price</label>
-          <input type="text" 
-            value={this.state.price} 
-            onChange={this.handleChange} 
-            name="price" 
-            className="form-control" 
-          />
-          <label>Quantity</label>
-          <input 
-            type="number" 
-            value={this.state.quantity} 
-            onChange={this.handleChange} 
-            name="quantity" 
-            className="form-control" 
-          />
+          
           <label>Due Date</label>
           <input 
             type="date" 
@@ -128,7 +145,50 @@ class InvoiceInput extends React.Component {
             name="client_address" 
             className="form-control" 
           />
-          
+
+          <h3>Items</h3>
+          {
+            items.map((val, idx) => {
+              return (
+                <div className="row">
+                  <div className="col-sm-6">
+                    <label>Item Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      data-id={idx}
+                      value={this.state.items_attributes.name} 
+                      onChange={this.handleChange}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="col-sm-3">
+                    <label>Item Price</label>
+                    <input
+                      type="text" 
+                      name="price"
+                      data-id={idx}
+                      value={this.state.items_attributes.price}
+                      onChange={this.handleChange}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="col-sm-3">
+                    <label>Item Quantity</label>
+                    <input 
+                    type="number" 
+                    name="quantity"
+                    data-id={idx}
+                    value={this.state.items_attributes.quantity}
+                    onChange={this.handleChange}
+                      className="form-control"
+                    />
+                  </div>                     
+                </div>               
+              )
+            })
+          }
+          <button onClick={this.addItem}>Add Item</button>
           <br /><br />
           <input type="submit" />          
         </form>
