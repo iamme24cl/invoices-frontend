@@ -13,6 +13,15 @@ const accountReducer = (state = {accounts: []}, action) => {
         }
       })
       return {...state, accounts: accounts}
+    case 'DELETE_INVOICE':
+      let accounts2 = state.accounts.map(account => {
+        if (account.id === action.payload.id) {
+          return action.payload
+        } else {
+          return account
+        }
+      })
+      return {...state, accounts: accounts2}
     default:
       return state
   }

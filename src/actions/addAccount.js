@@ -11,7 +11,6 @@ export function addAccount(data) {
     })
     .then(response => response.json())
     .then(account => dispatch({
-      // console.log('Success:', dataObj)
       type: 'ADD_ACCOUNT',
       payload: account
     }))

@@ -1,16 +1,27 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import { deleteInvoice } from '../actions/deleteInvoice'
 
-const Invoices = (props) => {
-  // console.log(props.invoices)
-  return (
+class Invoices extends React.Component {
+  handleDelete = (invoice) => {
+    // debugger
+    this.props.deleteInvoice(invoice.id, invoice.account_id)
+  }
+
+  render() {
+    return (
     <div>
-      {props.invoices && props.invoices.map(invoice => {
+      {this.props.invoices && this.props.invoices.map(invoice => {
         return (
-          <li key={invoice.id}>{invoice.client_name} - STATUS: {invoice.status} --- Invoice Total: ${invoice.total}</li>
+          <li key={invoice.id}>
+            {invoice.client_name} - STATUS: {invoice.status} --- Invoice Total: ${invoice.total}
+            <button onClick={() => this.handleDelete(invoice)}>Delete</button>
+          </li>
         )
       })}
     </div>
-  )
+  )}
+  
 }
 
-export default Invoices
+export default connect(null, {deleteInvoice})(Invoices)

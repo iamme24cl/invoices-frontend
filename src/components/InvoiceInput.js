@@ -79,19 +79,29 @@ class InvoiceInput extends React.Component {
           />
           
           <label>Payment Terms</label><br />
-          <select name="payment_terms" onChange={this.handleChange} className="">
+          <select 
+            name="payment_terms" 
+            onChange={this.handleChange} 
+            value={this.state.payment_terms}
+            className=""
+          >
             <option>Select</option>
-            <option value="1">1</option>
-            <option value="15">15</option>
-            <option value="30">30</option>
+            <option>1</option>
+            <option>15</option>
+            <option>30</option>
           </select><br />
 
           <label>Status</label><br />
-          <select name="status" onChange={this.handleChange} className="">
+          <select 
+            name="status"
+            value={this.state.status}  
+            onChange={this.handleChange} 
+            className=""
+          >
             <option>Select</option>
-            <option value="draft">draft</option>
-            <option value="pending">pending</option>
-            <option value="paid">paid</option>
+            <option>draft</option>
+            <option>pending</option>
+            <option>paid</option>
           </select><br />
           
           <label>Client Name</label>
