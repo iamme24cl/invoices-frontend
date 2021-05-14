@@ -6,7 +6,6 @@ import { Provider } from 'react-redux'
 import {BrowserRouter as Router} from 'react-router-dom'
 
 import accountReducer from './reducers/accountReducer'
-import './index.css';
 import App from './App';
 
 // set up our store

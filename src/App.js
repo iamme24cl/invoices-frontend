@@ -4,14 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import {connect} from 'react-redux'
 // import {fetchAccounts} from './actions/fetchAccounts'
 import AccountsContainer from './containers/AccountsContainer'
+import NavBar from './components/NavBar'
+import Header from './components/Header'
 
 
 class App extends React.Component {
 
   render () {
     return (
-      <div className="App container">
-       <AccountsContainer />
+      <div className="App">
+        <NavBar />
+        <Header />
+        <AccountsContainer />
       </div>
     );
   }

@@ -1,39 +1,186 @@
-.App {
-  /* text-align: center; */
-  margin-top: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+
+:root {
+  --modal-duration: 1s;
+  --primary-color: #27282e;
+  --secondary-color: ;
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #f2f2f2;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  transition: transform 0.3s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body.show-nav {
+  /* Should be the width of the nav */
+  transform: translateX(100px);
 }
 
-.App-link {
-  color: #61dafb;
+nav {
+  background-color: #27282e;
+  border-right: 2px solid rgba(200, 200, 200, 0.1);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100vh;
+  z-index: 100;
+  transform: translateX(-100%);
 }
 
-@keyframes App-logo-spin {
+nav .logo {
+  padding: 30px 0;
+  text-align: center;
+}
+
+nav .logo img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  border-bottom: 2px solid rgba(200, 200, 200, 0.1);
+  padding: 20px;
+}
+
+nav ul li:first-of-type {
+  border-top: 2px solid rgba(200, 200, 200, 0.1);
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li:hover {
+  text-decoration: underline;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+/* Toggle Navbar */
+.toggle {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+h1 {
+  letter-spacing: 1px;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+}
+
+.modal-container.show-modal {
+  display: block;
+}
+
+.update-modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+}
+
+.update-modal-container.show-modal {
+  display: block;
+}
+
+.form-modal {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  overflow: hidden;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 400px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 15px;
+}
+
+.modal-form div {
+  margin: 15px 0;
+  padding: 0 10px;
+  position: relative;
+}
+
+.check-box label input {
+  margin-left: 5px;
+}
+
+.close-btn {
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 25px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.submit-btn {
+  margin-bottom: 10px;
+  margin-left: 315px;
+}
+
+@keyframes modalopen {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
