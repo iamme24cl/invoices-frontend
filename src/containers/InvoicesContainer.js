@@ -9,8 +9,12 @@ class InvoicesContainer extends React.Component {
   render() {
     return (
       <div>
-        <InvoiceInput account={this.props.account} />
-        <Invoices invoices={this.props.account && this.props.account.invoices} />
+        <Switch>
+          <Route path='/accounts/:id/invoices/new' render={(routerProps) =>  <InvoiceInput {...routerProps} account={this.props.account} /> } />
+          <Route path='/accounts/:id/invoices' render={(routerProps) =>  <Invoices {...routerProps} invoices={this.props.account && this.props.account.invoices} /> } />
+        </Switch>
+       
+        
       </div>
     )
   }

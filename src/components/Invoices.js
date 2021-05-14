@@ -14,7 +14,9 @@ class Invoices extends React.Component {
       {this.props.invoices && this.props.invoices.map(invoice => {
         return (
           <li key={invoice.id}>
-            {invoice.client_name} - STATUS: {invoice.status} --- Invoice Total: ${invoice.invoice_total}
+            {invoice.client_name} - 
+            STATUS: {invoice.status} --- Invoice Total: ${invoice.invoice_total}
+            
             <button onClick={() => this.handleDelete(invoice)}>Delete</button>
           </li>
         )

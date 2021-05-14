@@ -1,6 +1,7 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import InvoicesContainer from '../containers/InvoicesContainer'
+import AccountEdit from '../components/AccountEdit'
 
 
 const Account = (props) => {
@@ -12,6 +13,7 @@ const Account = (props) => {
     <div>
       <h1>{account ? account.accountname: null}</h1>
       <p>{account ? account.address: null}</p>
+      <AccountEdit account={account}/>
       <InvoicesContainer account={account}/>
     </div>
   )
