@@ -4,6 +4,7 @@ const Header = (props) => {
 
   const handleClick = () => {
     document.body.classList.toggle('show-nav');
+    // console.log(document.body.classList);
   }
 
   return (

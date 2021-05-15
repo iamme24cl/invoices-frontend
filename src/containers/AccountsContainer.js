@@ -14,10 +14,10 @@ class AccountsContainer extends React.Component {
   componentDidMount() {
     this.props.fetchAccounts()
   }
-  
+
   render() {
     return (
-      <div className="container">
+      <div onClick={this.props.onClick} className="container">
           <Switch>
           <Route path='/accounts/new' component={AccountInput}/>
           <Route path='/accounts/:id/edit' render={(routerProps) => <AccountEdit {...routerProps} account={this.props.accounts.filter(account => account.id === routerProps.match.params.id++)} />}/>

@@ -11,12 +11,19 @@ import Header from './components/Header'
 
 class App extends React.Component {
 
+  handleClick = () => {
+    const body = document.body
+    if (body.className == 'show-nav') {
+      body.classList.remove('show-nav')
+    }
+  }
+
   render () {
     return (
       <div className="App">
         <NavBar />
         <Header />
-        <AccountsContainer />
+        <AccountsContainer onClick={this.handleClick} />
       </div>
     );
   }
