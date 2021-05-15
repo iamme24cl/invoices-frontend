@@ -33,7 +33,7 @@ class AccountInput extends React.Component {
 
   render() {
     return (
-      <div className="modal-container">
+      <div className="modal-container new-account-form">
         <div className="form-modal">
           <div className="form-header">
             <h4>New Account</h4>
@@ -43,10 +43,12 @@ class AccountInput extends React.Component {
             <div className="form-group">
               <label>Account Name</label>
               <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/>
-
+            </div>
+            <div className="form-group">
               <label>Password</label>
               <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/>
-
+            </div>
+            <div className="form-group">
               <label>Address</label>
               <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange} className="form-control"/>
             </div>
