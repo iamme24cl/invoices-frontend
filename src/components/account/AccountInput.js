@@ -52,7 +52,7 @@ class AccountInput extends React.Component {
             </div>
 
             <div className="form-group">
-              <input type="submit" className="btn btn-primary submit-btn"/>    
+              <input type="submit" className="cta-btn btn btn-dark submit-btn"/>    
             </div>
 
           </form>

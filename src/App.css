@@ -104,60 +104,31 @@ h1 {
 .container {
   margin-top: 20px;
   position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-container {
   background-color: rgba(0, 0, 0, 0.6);
-  /* display: none; */
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; */
-  width: auto;
+  border-radius: 5px;
+  width: 650px;
   height: auto;
-}
-
-.modal-container.show-modal {
-  display: block;
-}
-
-.update-modal-container {
-  background-color: rgba(0, 0, 0, 0.6);
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: auto;
-}
-
-.update-modal-container.show-modal {
-  display: block;
+  position: relative;
+  /* min-height: 40vh; */
+  margin: 15px auto 30px;
 }
 
 .form-modal {
   background-color: #f2f2f2;
-  /* border-radius: 5px; */
+  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  /* position: absolute;
-  overflow: hidden;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
-  width: 600px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration); */
 }
-
-
 
 .form-header {
   background-color: var(--primary-color);
   color: #fff;
   padding: 15px;
+  border-radius: 5px;
 }
 
 .modal-form div {
@@ -168,27 +139,6 @@ h1 {
 
 .check-box label input {
   margin-left: 5px;
-}
-
-.close-btn {
-  background: transparent;
-  border: 0;
-  color: #fff;
-  font-size: 25px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-
-@keyframes modalopen {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 /* New Styles */
@@ -215,5 +165,14 @@ h1 {
 
 .submit-btn {
   margin-bottom: 10px;
+}
+
+.cta-btn {
+  width: 600px;
+  margin-left: 15px;
+}
+
+.items-div {
+  text-align: center;
 }
 

@@ -181,7 +181,7 @@ class InvoiceInput extends React.Component {
             </div>
             
            <div className="form-group">
-            <h3>Items</h3>
+            <h3 className="items-div" >Items</h3>
               {
                 items.map((val, idx) => {
                   return (
@@ -235,9 +235,7 @@ class InvoiceInput extends React.Component {
                   )
                 })
               }
-              
-              
-              <input className="btn btn-primary submit-btn" type="submit" />     
+              <input className="cta-btn btn btn-dark submit-btn" type="submit" />     
            </div>                 
           </form>
         </div>
