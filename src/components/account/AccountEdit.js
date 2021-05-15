@@ -1,14 +1,22 @@
 import React from 'react' 
 import {connect} from 'react-redux'
-import {addAccount} from '../actions/addAccount'
+import {editAccount} from '../../actions/editAccount'
 
-class AccountInput extends React.Component {
+class AccountEdit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      accountname: '',
-      password: '',
-      address: ''
+    
+    let account = this.props.account;
+    if (account) {
+      this.state = {
+        accountname: account.accountname,
+        address: account.address
+      }
+    } else {
+      this.state = {
+        accountname: '',
+        address: ''
+      }
     }
   }
 
@@ -21,10 +29,10 @@ class AccountInput extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.addAccount(this.state)
+    let account = {...this.state, id: this.props.account.id}
+    this.props.editAccount(account)
     this.setState({
-      name: '',
-      password: '',
+      accountname: '',      
       address: ''
     })
   }
@@ -34,9 +42,8 @@ class AccountInput extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit} className="form-group">
           <label>Account Name</label><br />
-          <input type="text" placeholder="User Name" value={this.state.name} name="name" onChange={this.handleChange} className="form-control"/><br/>
-          <label>Password</label><br/>
-          <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/><br/>
+          <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/><br/>
+          
           <label>Address</label><br/>
           <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange} className="form-control"/><br/><br/>
           <input type="submit" className="btn btn-primary"/>
@@ -46,4 +53,8 @@ class AccountInput extends React.Component {
   }
 }
 
-export default connect(null, {addAccount})(AccountInput);
+AccountEdit.defaultProps = {
+  accounts: {}
+}
+
+export default connect(null, {editAccount})(AccountEdit);

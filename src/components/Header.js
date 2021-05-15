@@ -12,7 +12,7 @@ const Header = (props) => {
         <i className="fa fa-bars fa-2x"></i>
       </button>
 
-      <h1>Invoice Tracker</h1>   
+      <h1>Invoices</h1>   
     </header>
   )
 }
