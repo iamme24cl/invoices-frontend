@@ -6,7 +6,7 @@ import AccountInput from '../components/account/AccountInput'
 import AccountEdit from '../components/account/AccountEdit'
 import Accounts from '../components/account/Accounts'
 import Account from '../components/account/Account'
-import NavBar from '../components/NavBar'
+import HomePage from '../components/HomePage'
 
 
 class AccountsContainer extends React.Component {
@@ -23,6 +23,7 @@ class AccountsContainer extends React.Component {
           <Route path='/accounts/:id/edit' render={(routerProps) => <AccountEdit {...routerProps} account={this.props.accounts.filter(account => account.id === routerProps.match.params.id++)} />}/>
           <Route path='/accounts/:id' render={(routerProps) => <Account {...routerProps} accounts={this.props.accounts} />}/>
           <Route path='/accounts' render={(routerProps) => <Accounts {...routerProps} accounts={this.props.accounts} />} />
+          <Route path="/" component={HomePage} />
         </Switch>
       </div>
     )

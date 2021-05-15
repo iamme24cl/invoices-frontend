@@ -7,9 +7,9 @@ const Accounts = (props) => {
     <div>
       {props.accounts.map(account => {
         return (
-          <li key={account.id}>
-            <Link to={`/accounts/${account.id}`}>{account.accountname}</Link>
-          </li>
+          <div className="accounts-container" key={account.id}>
+            <Link to={`/accounts/${account.id}`}  className="account-link"  >{account.accountname}</Link>
+          </div>
         )
       })}
     </div>
