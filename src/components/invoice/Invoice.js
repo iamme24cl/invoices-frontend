@@ -1,10 +1,133 @@
 import React from 'react'
+import Moment from 'react-moment'
 
 const Invoice = (props)  => {
+  let invoice = props.invoices && props.invoices.find(invoice => invoice.id == props.match.params.id)
+  let address = invoice.account.address.split(", ")
+  let clientAddress = invoice.client_address.split(", ")
 
+  console.log(invoice.items);
   return (
     <div>
-      Invoice Show Page
+      <div className="col-md-12">
+          <div className="invoice">
+            {/* <!-- begin invoice-company --> */}
+            <div className="invoice-company text-inverse f-w-600">
+                <span className="pull-right hidden-print">
+                <a className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
+                <button className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</button>
+                </span>
+                {invoice.account.accountname}, Inc
+            </div>
+            {/* <!-- end invoice-company --> */}
+            {/* <!-- begin invoice-header --> */}
+            <div className="invoice-header">
+                <div className="invoice-from">
+                  <small>from</small>
+                  <div className="m-t-5 m-b-5">
+                      <strong className="text-inverse">{invoice.account.accountname}, Inc.</strong><br />
+                      {address[0]}<br />
+                      {address[1]}, {address[2]},<br />
+                      {address[3]}<br />
+                      {/* Email: */}
+                  </div>
+                </div>
+                <div className="invoice-to">
+                  <small>to</small>
+                  <address className="m-t-5 m-b-5">
+                      <strong className="text-inverse">{invoice.client_name}</strong><br />
+                      {clientAddress[0]}<br />
+                      {clientAddress[1]}, {clientAddress[2]}<br />
+                      {clientAddress[3]}<br />
+                      Email: {invoice.client_email}
+                  </address>
+                </div>
+                <div className="invoice-date">
+                  <small>Invoice</small>
+                  <div className="date text-inverse m-t-5"><Moment format="LL">{invoice.payment_due}</Moment></div>
+                  <div className="invoice-detail">
+                      #{invoice.random_code + invoice.id}<br />
+                      {invoice.description}
+                  </div>
+                </div>
+            </div>
+            {/* <!-- end invoice-header --> */}
+            {/* <!-- begin invoice-content --> */}
+            <div className="invoice-content">
+                {/* <!-- begin table-responsive --> */}
+                <div className="table-responsive">
+                  <table className="table table-invoice">
+                      <thead>
+                        <tr>
+                            <th>ITEM DESCRIPTION</th>
+                            <th className="text-center" width="10%">PRICE</th>
+                            <th className="text-center" width="10%">QUANTIY</th>
+                            <th className="text-right" width="20%">LINE TOTAL</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {invoice.items.map(item => {
+                          return (
+                            <tr>
+                              <td>
+                                <span className="text-inverse">{item.name}</span><br />
+                                {/* <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id sagittis arcu.</small> */}
+                              </td>
+                              <td className="text-center">${item.price}</td>
+                              <td className="text-center">{item.quantity}</td>
+                              <td className="text-right">${item.total}</td>
+                          </tr>
+                          )
+                        })}                        
+                      </tbody>
+                  </table>
+                </div>
+                {/* <!-- end table-responsive --> */}
+                {/* <!-- begin invoice-price --> */}
+                <div className="invoice-price">
+                  <div className="invoice-price-left">
+                      {/* <div className="invoice-price-row"> */}
+                        {/* <div className="sub-price">
+                            <small>SUBTOTAL</small>
+                            <span className="text-inverse">$4,500.00</span>
+                        </div> */}
+                        {/* <div className="sub-price">
+                            <i className="fa fa-plus text-muted"></i>
+                        </div>
+                        <div className="sub-price">
+                            <small>PAYPAL FEE (5.4%)</small>
+                            <span className="text-inverse">$108.00</span>
+                        </div> */}
+                      {/* </div> */}
+                  </div>
+                  <div className="invoice-price-right">
+                      <small>TOTAL</small> <span className="f-w-600">${invoice.invoice_total}</span>
+                  </div>
+                </div>
+                {/* <!-- end invoice-price --> */}
+            </div>
+            {/* <!-- end invoice-content --> */}
+            {/* <!-- begin invoice-note --> */}
+            <div className="invoice-note">
+                * Make all cheques payable to {invoice.account.accountname}<br />
+                * Payment is due within 30 days<br />
+                * If you have any questions concerning this invoice, contact Cool Lama at clama@mail.com
+            </div>
+            {/* <!-- end invoice-note --> */}
+            {/* <!-- begin invoice-footer --> */}
+            <div className="invoice-footer">
+                <p className="text-center m-b-5 f-w-600">
+                  THANK YOU FOR YOUR BUSINESS
+                </p>
+                <p className="text-center">
+                  <span className="m-r-10"><i className="fa fa-fw fa-lg fa-globe"></i> coollama.com</span>
+                  <span className="m-r-10"><i className="fa fa-fw fa-lg fa-phone-volume"></i> T:016-18772302</span>
+                  <span className="m-r-10"><i className="fa fa-fw fa-lg fa-envelope"></i> clama@mail.com</span>
+                </p>
+            </div>
+            {/* <!-- end invoice-footer --> */}
+          </div>
+      </div>
     </div>
   )
 }

@@ -10,10 +10,10 @@ const Account = (props) => {
 
   return (
     <div>
-      
+{/*       
       <h2>{account ? account.accountname: null}</h2>
       <p>{account ? account.address: null}</p>
-      <p>There are {account ? account.invoices.length : null } total invoices</p>
+      <p>There are {account ? account.invoices.length : null } total invoices</p> */}
     
       <InvoicesContainer account={account ? account: null}/>
     </div>

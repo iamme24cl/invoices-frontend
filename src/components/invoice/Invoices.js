@@ -8,7 +8,7 @@ import InvoiceList from './InvoiceList'
 class Invoices extends React.Component {
   handleDelete = (invoice) => {
     // debugger
-    this.props.deleteInvoice(invoice.id, invoice.account_id)
+    this.props.deleteInvoice(invoice.id, invoice.account.id)
   }
 
  
@@ -16,7 +16,7 @@ class Invoices extends React.Component {
   
     return (
       <div>
-        <InvoiceList invoices={this.props.invoices} />
+        <InvoiceList account={this.props.account} invoices={this.props.invoices} />
       </div>
   )}
   
