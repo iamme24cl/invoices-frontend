@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {deleteInvoice} from '../../actions/deleteInvoice'
 import Moment from 'react-moment'
+import html2pdf from 'html2pdf.js'
 
 class Invoice  extends React.Component {
 
@@ -10,6 +11,11 @@ class Invoice  extends React.Component {
     // debugger
     this.props.deleteInvoice(invoice.id, invoice.account.id)
     this.props.history.push(`/accounts/${invoice.account.id}`)
+  }
+
+  generatePDF = () => {
+    const element = document.getElementById('invoice');
+    html2pdf().from(element).save();
   }
  
 
@@ -23,14 +29,14 @@ class Invoice  extends React.Component {
     return (
       <div>
         <div className="col-md-12">
-            <div className="invoice">
+            <div id="invoice" className="invoice">
               {/* <!-- begin invoice-company --> */}
               <div className="invoice-company text-inverse f-w-600">
                   <span className="pull-right hidden-print">
                   <Link to={invoiceEditLink} className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</Link>
                   <button onClick={() => this.handleDelete(invoice)} className="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                  <a className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
-                  <button className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</button>
+                  <button onClick={this.generatePDF} className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</button>
+                  <button onClick={() => window.print()} className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</button>
                   </span>
                   {invoice.account.accountname}, Inc
               </div>

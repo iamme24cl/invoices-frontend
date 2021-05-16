@@ -44,7 +44,11 @@ const InvoiceList = (props) => {
                   <td><Moment format="LL">{invoice.payment_due}</Moment></td>
                   <td>{invoice.client_name}</td>
                   <td>${invoice.invoice_total}</td>
-                  <td>{invoice.status}</td>
+                  <td 
+                    className={invoice.status === "paid" ? "paid" : invoice.status === "draft" ? "draft" : "not-paid" }
+                  >
+                    {invoice.status}
+                  </td>
                   <td><Link to={invoicePath} className="view-btn"><i class="fa fa-eye" aria-hidden="true"></i></Link></td>              
                 </tr>
               )

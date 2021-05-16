@@ -215,6 +215,17 @@ h1 {
   position: relative;
 }
 
+.paid {
+  color: green;
+}
+
+.not-paid {
+  color: red;
+}
+
+.draft {
+  color: orange;
+}
 
 /* Invoice show page styles ******************************************************************************/
 
