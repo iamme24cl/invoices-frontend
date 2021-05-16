@@ -9,9 +9,13 @@ const InvoiceList = (props) => {
 
   return (
     <div className="invoice-list-container">
-      <h2>{props.account && props.account.accountname}</h2>
+   
+      <h2>
+        {props.account && props.account.accountname}
+        <Link to={accountEditLink} className="btn btn-sm edit-account-btn"><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</Link>
+      </h2>
 
-      <Link to={accountEditLink} className="btn btn-sm account-edit-btn"><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</Link>
+     
 
       <p>There are {props.account && props.account.invoices.length} total Invoices</p>
       
