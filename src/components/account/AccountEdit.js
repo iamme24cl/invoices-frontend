@@ -6,7 +6,10 @@ class AccountEdit extends React.Component {
   constructor(props) {
     super(props);
     
-    let account = this.props.account;
+    let account = this.props.account[0];
+
+    console.log(account)
+
     if (account) {
       this.state = {
         accountname: account.accountname,
@@ -29,25 +32,38 @@ class AccountEdit extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let account = {...this.state, id: this.props.account.id}
-    this.props.editAccount(account)
-    this.setState({
-      accountname: '',      
-      address: ''
-    })
+    let account = this.props.account[0];
+    this.props.editAccount(this.state, account.id)
+    this.props.history.push(`/accounts/${account.id}`)
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit} className="form-group">
-          <label>Account Name</label><br />
-          <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/><br/>
-          
-          <label>Address</label><br/>
-          <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange} className="form-control"/><br/><br/>
-          <input type="submit" className="btn btn-primary"/>
-        </form>
+      <div className="modal-container new-account-form">
+        <div className="form-modal">
+          <div className="form-header">
+            <h4>Edit Account</h4>
+          </div>
+
+          <form onSubmit={this.handleSubmit} className="modal-form" >
+            <div className="form-group">
+              <label>Account Name</label>
+              <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/>
+            </div>
+           
+            <div className="form-group">
+              <label>Address</label>
+              <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange} className="form-control"/>
+            </div>
+
+            <div className="form-group">
+              <input type="submit" className="cta-btn btn btn-dark submit-btn"/>    
+            </div>
+
+          </form>
+
+        </div>
+        
       </div>
     )
   }

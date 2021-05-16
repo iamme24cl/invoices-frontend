@@ -1,6 +1,6 @@
-export const editAccount = (data) => {
+export const editAccount = (data, accountId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/accounts/${data.id}`, {
+    fetch(`http://localhost:3000/api/v1/accounts/${accountId}`, {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
@@ -9,6 +9,9 @@ export const editAccount = (data) => {
       body: JSON.stringify(data)
     })
     .then(response => response.json())
-    .then(account => dispatch({type: 'EDIT_ACCOUNT', payload: account}))
+    .then(account => {
+      console.log(account);
+      dispatch({type: 'EDIT_ACCOUNT', payload: account});
+    })
   }
 }

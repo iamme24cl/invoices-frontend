@@ -16,14 +16,35 @@ class AccountsContainer extends React.Component {
   }
 
   render() {
+   
     return (
       <div onClick={this.props.onClick} className="container">
           <Switch>
-          <Route path='/accounts/new' component={AccountInput}/>
-          <Route path='/accounts/:id/edit' render={(routerProps) => <AccountEdit {...routerProps} account={this.props.accounts.filter(account => account.id === routerProps.match.params.id++)} />}/>
-          <Route path='/accounts/:id' render={(routerProps) => <Account {...routerProps} accounts={this.props.accounts} />}/>
-          <Route path='/accounts' render={(routerProps) => <Accounts {...routerProps} accounts={this.props.accounts} />} />
-          <Route path="/" component={HomePage} />
+            <Route 
+              path='/accounts/new' 
+              component={AccountInput}
+            />
+
+            <Route 
+              path='/accounts/:id/edit' 
+              render={(routerProps) => <AccountEdit {...routerProps} account={this.props.accounts.filter(account => account.id == routerProps.match.params.id)}/>}
+            />
+
+            <Route 
+              path='/accounts/:id' 
+              render={(routerProps) => <Account {...routerProps} accounts={this.props.accounts} />}
+            />
+
+            <Route 
+              path='/accounts' 
+              render={(routerProps) => <Accounts {...routerProps} 
+              accounts={this.props.accounts} />} 
+            />
+
+            <Route 
+              path="/" 
+              component={HomePage} 
+            />
         </Switch>
       </div>
     )

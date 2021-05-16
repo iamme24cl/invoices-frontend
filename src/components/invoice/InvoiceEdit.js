@@ -7,9 +7,21 @@ class InvoiceEdit extends React.Component {
   constructor(props) {
     super(props);
 
-    let invoice = this.props.invoicers && this.props.invoices.find(invoice => invoice.id == this.props.match.params.id)
+    let invoice = this.props.invoices && this.props.invoices.find(invoice => invoice.id == this.props.match.params.id)
+
+    console.log(invoice)
 
     if (invoice) {
+      this.state = {
+        description: invoice.description,
+        payment_due: invoice.payment_due,
+        payment_terms: invoice.payment_terms,
+        status: invoice.status,
+        client_name: invoice.client_name,
+        client_email: invoice.client_email,
+        client_address: invoice.client_address
+      }
+    } else {
       this.state = {
         description: "",
         payment_due: "",
@@ -17,87 +29,36 @@ class InvoiceEdit extends React.Component {
         status: "",
         client_name: "",
         client_email: "",
-        client_address: "",
-        items_attributes: [
-          {
-            name: "",
-            price: "",
-            quantity: ""
-          }
-        ]
+        client_address: ""
       }
     }
-    
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.addItem = this.addItem.bind(this)
-    this.deleteItem = this.deleteItem.bind(this)
   }
-
-  handleChange = (event) => {
-    if(["name", "price", "quantity"].includes(event.target.name)) {
-      let items_attributes = [...this.state.items_attributes]
-      items_attributes[event.target.dataset.id][event.target.name] = event.target.value
-      this.setState({items_attributes}/*, () => console.log(this.state.items_attributes)*/)
-    } else {
-      this.setState({ 
-        [event.target.name]: event.target.value
-      })
-    }
-  }
-
-  handleSubmit = (event) => {
-    debugger
-    let account = this.props.invoices.find(invoice => invoice.id == this.props.match.params.account_id)
-    event.preventDefault();
-    this.props.editInvoice(this.state, account.id)
-    // this.setState({
-    //   description: "",
-    //   payment_due: "",
-    //   payment_terms: "",
-    //   status: "",
-    //   client_name: "",
-    //   client_email: "",
-    //   client_address: "",
-    //   items_attributes: [
-    //     {
-    //       name: "",
-    //       price: "",
-    //       quantity: ""
-    //     }
-    //   ]
-    // })
-    // event.target.reset()
-    this.props.history.push(`/accounts/${this.props.account.id}`)
-  }
-
-  addItem = event => {
-    event.preventDefault();
-    this.setState((prevState) => ({
-      items_attributes: [...prevState.items_attributes, {name: "", price: "", quantity: ""}]
-    }))
-  }
-
-  deleteItem = (index) => {
-    this.setState({
-      items_attributes: this.state.items_attributes.filter((item, itemIndex) => index !== itemIndex)
+    
+   handleChange = (event) => {
+    this.setState({ 
+      [event.target.name]: event.target.value
     })
   }
 
-  
+  handleSubmit = (event) => {
+    // debugger
+    let invoice = this.props.invoices.find(invoice => invoice.id == this.props.match.params.id)
+    event.preventDefault();
+    this.props.editInvoice(this.state, invoice.account.id,  invoice.id)
+
+    this.props.history.push(`/accounts/${invoice.account.id}`)
+  }
 
   render() {
-    let items = this.state.items_attributes;
 
     return (
       <div className="modal-container" id="modal">
         <div className="form-modal">
-          {/* <button className="close-btn" id="close">
-            <i className="fa fa-times"></i>
-          </button> */}
-
+         
           <div className="form-header">
-            <h4>New Invoice</h4>
+            <h4>Edit Invoice</h4>
           </div>
         
           <form className="modal-form" onSubmit={this.handleSubmit}>
@@ -188,60 +149,6 @@ class InvoiceEdit extends React.Component {
             </div>
             
            <div className="form-group">
-            <h3 className="items-div" >Items</h3>
-              {
-                items.map((val, idx) => {
-                  return (
-                    <div className="row">
-                      <div className="col-sm-4">
-                        <label>Item Name</label>
-                        <input
-                          type="text"
-                          name="name"
-                          data-id={idx}
-                          value={this.state.items_attributes.name} 
-                          onChange={this.handleChange}
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="col-sm-3">
-                        <label>Item Price</label>
-                        <input
-                          type="text" 
-                          name="price"
-                          data-id={idx}
-                          value={this.state.items_attributes.price}
-                          onChange={this.handleChange}
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="col-sm-3">
-                        <label>Item Quantity</label>
-                        <input 
-                        type="number" 
-                        name="quantity"
-                        data-id={idx}
-                        value={this.state.items_attributes.quantity}
-                        onChange={this.handleChange}
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="col-sm-2">
-                        {idx === 0 ? (
-                          <button className="btn btn-success add-btn" onClick={this.addItem}>
-                          <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        </button>
-                        ) : (
-                          <button className="btn btn-danger minus-btn" onClick={() => this.deleteItem(idx)}>
-                            <i className="fa fa-minus" aria-hidden="true" />
-                          </button>
-                        )}
-                        
-                      </div>                     
-                    </div>               
-                  )
-                })
-              }
               <input className="cta-btn btn btn-dark submit-btn" type="submit" />     
            </div>                 
           </form>

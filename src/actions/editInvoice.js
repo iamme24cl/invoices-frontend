@@ -1,6 +1,6 @@
-export const editInvoice = (data, accountId) => {
+export const editInvoice = (data, accountId, invoiceId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/accounts/${accountId}/invoices/${data.id}`, {
+    fetch(`http://localhost:3000/api/v1/accounts/${accountId}/invoices/${invoiceId}`, {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'

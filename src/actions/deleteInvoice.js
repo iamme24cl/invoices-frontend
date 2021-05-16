@@ -6,7 +6,7 @@ export const deleteInvoice = (invoiceId, accountId) => {
     })
     .then(response => response.json())
     .then(account => {
-      console.log(account);
+      // console.log(account);
       dispatch({type: 'DELETE_INVOICE', payload: account});
     })
   }

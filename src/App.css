@@ -215,7 +215,15 @@ h1 {
   position: relative;
 }
 
-/* Invoice show page styles */
+.btn.btn-sm.account-edit-btn {
+  position: absolute;
+  top: 10px;
+  left: 250px;
+}
+
+
+/* Invoice show page styles ******************************************************************************/
+
 .invoice {
   background: #fff;
   padding: 20px

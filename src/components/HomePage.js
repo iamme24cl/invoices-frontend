@@ -3,7 +3,7 @@ import React from 'react';
 const HomePage = () => {
   return (
     <div>
-      <img className="home-img img-fluid" src="https://lh3.googleusercontent.com/GWCChif1rtuziufWrAkceqKK5qwKpDbAWsyw6C3uBIsJq0o3CtW4LM9WPRySTwMUdmHwSTcT_k7KFwLPWOV9UTYMT1MqQ2jhy50YS0n26qcks-P3769AUArxtWXnUNvzuDp1SivYArUK7AHNAWyjI-YhNQ44kc6_qhFCWApIWmQgcNH8Jm0gzlihSZRbAYlKBy8_4esiPknq-sDRk1ipIBuAyvA96SeRFIlJm8Exhm3wK2Wpy5rtam7IoAGGEl895fhaVrmamyMzDYq147kde_A8O1qlNjmCWdX5Rrqxd8RH3oTAHaE7Xls5rV1h33kEn-teU-TAaQPXZjCYiopmcAKEtsAJAGAD22BJYzk_FI3KOXyAwzxzfF4P4x1PnX4h6kLzBRrK3FyqDGVXggns11CtNLY-fFuOCr5lIoXW49ISpfWC16NeAZzWUwNatkP8AOa_9Eszwkjw8L-UOfIdR0RHnxyenrqB5aM19vHpgCSvgTX3ZD8qW0qXzPgXKXV7M-po_oaAiQ70_hr44zUH8f_IUQBe_R9Ep0_NxnSpRQMvAHbIyETS_KOyf3_inCSplHHebp8kEGT2AnHwqqO8Q60M7N-1CB6JYA7SmVqTjSlKPb83cueKUVxFqFfuWgbqZzps7yHOhAJJhmVcUr5ziebjffUK_fUUKDloQzGlZn3dub12t6fv3xIUh8uaukU9OV2dRt7TalxqWMoqK_VUp5UC=w850-h548-no?authuser=0" />
+      <img className="home-img img-fluid" src="/financial-4560047_1280.jpg" />
     </div>
   )
 }

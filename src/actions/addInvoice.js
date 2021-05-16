@@ -10,7 +10,7 @@ export const addInvoice = (data, accountId) => {
     })
     .then(response => response.json())
     .then(account => {
-      console.log(account);
+      // console.log(account);
       dispatch({type: 'ADD_INVOICE', payload: account});
     })
   }
