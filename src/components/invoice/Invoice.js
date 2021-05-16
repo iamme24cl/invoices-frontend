@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {deleteInvoice} from '../../actions/deleteInvoice'
 import Moment from 'react-moment'
 
@@ -16,6 +17,7 @@ class Invoice  extends React.Component {
     let invoice = this.props.invoices && this.props.invoices.find(invoice => invoice.id == this.props.match.params.id)
     let address = invoice.account.address.split(", ")
     let clientAddress = invoice.client_address.split(", ")
+    let invoiceEditLink = `/accounts/${invoice.account.id}/invoices/${invoice.id}/edit`
     console.log(this.props);
 
     return (
@@ -25,7 +27,7 @@ class Invoice  extends React.Component {
               {/* <!-- begin invoice-company --> */}
               <div className="invoice-company text-inverse f-w-600">
                   <span className="pull-right hidden-print">
-                  <button className="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                  <Link to={invoiceEditLink} className="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</Link>
                   <button onClick={() => this.handleDelete(invoice)} className="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                   <a className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
                   <button className="btn btn-sm btn-white m-b-10 p-l-5"><i className="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</button>
