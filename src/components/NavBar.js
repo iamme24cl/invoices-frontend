@@ -6,9 +6,9 @@ const NavBar = () => {
     <div>
       <nav id="navbar">
         <div className="logo">
-          <img src="https://randomuser.me/api/portraits/men/9.jpg" alt="user" />
+          <img src="/Photo_1619833647159_Processed.png" alt="user" />
         </div>
-        <ul>
+        <ul className="nav-li">
           <li><Link to='/'>Home</Link></li>
           <li><Link to="/accounts">Accounts</Link></li>
           <li><Link to="/accounts/new">Sign Up</Link></li>

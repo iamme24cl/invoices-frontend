@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Texturina:wght@100;400&display=swap');
 
 :root {
   --modal-duration: 1s;
@@ -72,7 +73,7 @@ nav ul li a {
 }
 
 nav ul li:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 header {
@@ -215,16 +216,22 @@ h1 {
   position: relative;
 }
 
-.paid {
+.paid.status {
   color: green;
 }
 
-.not-paid {
+.not-paid.status {
   color: red;
 }
 
-.draft {
+.draft.status {
   color: orange;
+}
+
+.status {
+  font-style: italic;
+  font-family: 'Texturina', serif;
+  font-weight: bold;
 }
 
 /* Invoice show page styles ******************************************************************************/

@@ -45,9 +45,9 @@ const InvoiceList = (props) => {
                   <td>{invoice.client_name}</td>
                   <td>${invoice.invoice_total}</td>
                   <td 
-                    className={invoice.status === "paid" ? "paid" : invoice.status === "draft" ? "draft" : "not-paid" }
+                    className={invoice.status === "paid" ? "paid status" : invoice.status === "draft" ? "draft status" : "not-paid status" }
                   >
-                    {invoice.status.toUpperCase()}
+                    {invoice.status}
                   </td>
                   <td><Link to={invoicePath} className="view-btn"><i class="fa fa-eye" aria-hidden="true"></i></Link></td>              
                 </tr>
