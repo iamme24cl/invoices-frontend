@@ -47,7 +47,7 @@ const InvoiceList = (props) => {
                   <td 
                     className={invoice.status === "paid" ? "paid" : invoice.status === "draft" ? "draft" : "not-paid" }
                   >
-                    {invoice.status}
+                    {invoice.status.toUpperCase()}
                   </td>
                   <td><Link to={invoicePath} className="view-btn"><i class="fa fa-eye" aria-hidden="true"></i></Link></td>              
                 </tr>
