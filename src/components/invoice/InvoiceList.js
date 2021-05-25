@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom'
 import Moment from 'react-moment';
 
 
 const InvoiceList = (props) => {
+  const [filteredInvoices, setFilteredInvoices] = useState(props.invoices && props.invoices)
+  console.log(filteredInvoices)
   let accountlLink =  props.account ? `/accounts/${props.account.id}/invoices/new` : null
   let accountEditLink = props.account ? `/accounts/${props.account.id}/edit` : null
-  
+  let invoices = props.invoices;
+ 
 
+  const handleChange = (event) => {
+    // console.log(event.target.value);
+    console.log(invoices)
+    const filtered = invoices.filter(invoice => {
+      // console.log(invoice)
+      return invoice.status?.toLowerCase() == event.target.value.toLowerCase()
+    })
+    // invoices = filteredInvoices;
+    console.log(filtered);
+    setFilteredInvoices(filtered)
+  }
   
   return (
     <div className="invoice-list-container">
@@ -22,7 +36,10 @@ const InvoiceList = (props) => {
       
       <Link to={accountlLink} className="btn btn-dark new-invoice-btn"><i className="fa fa-plus plus-btn" aria-hidden="true"></i>New Invoice</Link>
 
- 
+      <form >
+        <input onChange={handleChange} type="text"  />
+      </form>
+
       <div className="table-responsive invoice-list">
         <table className="table table-hover invoice-table">
           <thead>
@@ -36,7 +53,7 @@ const InvoiceList = (props) => {
             </tr>          
           </thead>
           <tbody>
-            {props.invoices && props.invoices.map(invoice => {
+            {filteredInvoices && filteredInvoices.map(invoice => {
               
               let invoicePath = `/accounts/${invoice.account.id}/invoices/${invoice.id}`;
               

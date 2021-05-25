@@ -23,7 +23,9 @@ class AccountInput extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log('a')
     this.props.addAccount(this.state)
+    console.log('f')
     this.setState({
       accountname: '',
       password: '',
