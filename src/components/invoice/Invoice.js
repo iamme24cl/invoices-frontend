@@ -6,14 +6,19 @@ import Moment from 'react-moment'
 import html2pdf from 'html2pdf.js'
 
 class Invoice  extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.generatePDF = this.generatePDF.bind(this);
+  }
 
-  handleDelete = (invoice) => {
+  handleDelete(invoice) {
     // debugger
     this.props.deleteInvoice(invoice.id, invoice.account.id)
     this.props.history.push(`/accounts/${invoice.account.id}`)
   }
 
-  generatePDF = () => {
+  generatePDF() {
     const element = document.getElementById('invoice');
     html2pdf().from(element).save();
   }
@@ -116,7 +121,7 @@ class Invoice  extends React.Component {
                               <i className="fa fa-plus text-muted"></i>
                           </div>
                           <div className="sub-price">
-                              <small>PAYPAL FEE (5.4%)</small>
+                              <small>FEE (%)</small>
                               <span className="text-inverse">$108.00</span>
                           </div> */}
                         {/* </div> */}

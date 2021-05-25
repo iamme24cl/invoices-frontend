@@ -1,5 +1,5 @@
-import './App.css';
 import React from 'react';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {connect} from 'react-redux'
 // import {fetchAccounts} from './actions/fetchAccounts'
@@ -10,8 +10,12 @@ import Header from './components/Header'
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this)
+  }
 
-  handleClick = () => {
+  handleClick() {
     const body = document.body
     if (body.className == 'show-nav') {
       body.classList.remove('show-nav')

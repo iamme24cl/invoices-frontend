@@ -8,8 +8,6 @@ import Invoice from '../components/invoice/Invoice'
 class InvoicesContainer extends React.Component {
 
   render() {
-    
-
     return (
       <div>
         <Switch>
@@ -38,4 +36,4 @@ class InvoicesContainer extends React.Component {
   
 }
 
-export default InvoicesContainer
+export default InvoicesContainer;

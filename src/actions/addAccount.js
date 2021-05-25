@@ -1,5 +1,4 @@
-export function addAccount(data) {
-  // debugger;
+export const addAccount = (data) => {
   return (dispatch) => {
     fetch('http://localhost:3000/api/v1/accounts', {
       method: 'POST',

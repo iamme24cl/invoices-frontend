@@ -36,13 +36,13 @@ class InvoiceEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
     
-   handleChange = (event) => {
+   handleChange(event) {
     this.setState({ 
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     // debugger
     let invoice = this.props.invoices.find(invoice => invoice.id == this.props.match.params.id)
     event.preventDefault();

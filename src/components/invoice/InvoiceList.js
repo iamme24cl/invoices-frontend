@@ -6,7 +6,9 @@ import Moment from 'react-moment';
 const InvoiceList = (props) => {
   let accountlLink =  props.account ? `/accounts/${props.account.id}/invoices/new` : null
   let accountEditLink = props.account ? `/accounts/${props.account.id}/edit` : null
+  
 
+  
   return (
     <div className="invoice-list-container">
    
@@ -15,12 +17,12 @@ const InvoiceList = (props) => {
         <Link to={accountEditLink} className="btn btn-sm edit-account-btn"><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</Link>
       </h2>
 
-     
 
       <p>There are {props.account && props.account.invoices.length} total Invoices</p>
       
       <Link to={accountlLink} className="btn btn-dark new-invoice-btn"><i className="fa fa-plus plus-btn" aria-hidden="true"></i>New Invoice</Link>
 
+ 
       <div className="table-responsive invoice-list">
         <table className="table table-hover invoice-table">
           <thead>

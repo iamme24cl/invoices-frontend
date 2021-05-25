@@ -28,7 +28,7 @@ class InvoiceInput extends React.Component {
     this.deleteItem = this.deleteItem.bind(this)
   }
 
-  handleChange = (event) => {
+  handleChange(event) {
     if(["name", "price", "quantity"].includes(event.target.name)) {
       let items_attributes = [...this.state.items_attributes]
       items_attributes[event.target.dataset.id][event.target.name] = event.target.value
@@ -40,7 +40,7 @@ class InvoiceInput extends React.Component {
     }
   }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     // debugger
     event.preventDefault();
     this.props.addInvoice(this.state, this.props.account.id)
@@ -64,20 +64,18 @@ class InvoiceInput extends React.Component {
     this.props.history.push(`/accounts/${this.props.account.id}`)
   }
 
-  addItem = event => {
+  addItem(event) {
     event.preventDefault();
     this.setState((prevState) => ({
       items_attributes: [...prevState.items_attributes, {name: "", price: "", quantity: ""}]
     }))
   }
 
-  deleteItem = (index) => {
+  deleteItem(index) {
     this.setState({
       items_attributes: this.state.items_attributes.filter((item, itemIndex) => index !== itemIndex)
     })
   }
-
-  
 
   render() {
     let items = this.state.items_attributes;
@@ -244,4 +242,4 @@ class InvoiceInput extends React.Component {
   }
 }
 
-export default connect(null, {addInvoice})(InvoiceInput)
+export default connect(null, {addInvoice})(InvoiceInput);
