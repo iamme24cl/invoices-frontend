@@ -12,14 +12,12 @@
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Contact](#contact)
-<!-- * [License](#license) -->
 
 
 ## General Information
 - Create, update and delete invoices.
 - Easily manage invoicing your Clients, download the invoice as pdf onto your computer or print it out on paper.
 - I built this application to practice building a dynamic web application using React and Redux.
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 ## Technologies Used
 Ruby on Rails
@@ -54,4 +52,3 @@ Created by [@iamme24cl](https://github.com/iamme24cl) - feel free to contact me!
 <!-- ## License -->
 <!-- This project is open source and available under the [... License](). -->
 
-<!-- You don't have to include all sections - just the one's relevant to your project -->
