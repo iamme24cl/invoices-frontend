@@ -1,76 +1,43 @@
-# Project Name
-> Outline a brief description of your project.
-  This is the front end. Here is the link to the back end https://github.com/iamme24cl/invoices-backend
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+# Invoices
+> This application creates and manages Invoices for an account.
+
+> This is the front end. Here is the link to the back end https://github.com/iamme24cl/invoices-backend
+
+> Live demo [_here_](https://youtu.be/kMQJzSvwXkw). 
 
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
+- Create, update and delete invoices.
+- Easily manage invoicing your Clients, download the invoice as pdf onto your computer or print it out on paper.
+- I built this application to practice building a dynamic web application using React and Redux.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
-
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
-
-
-## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
-
-
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
-
+Ruby on Rails
+React
+Redux
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
+All depencies are listed in package.json file. Run `npm install` to install all dependencies
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
-
+* Clone this backend repository to your machine  https://github.com/iamme24cl/invoices-backend
+* Run `bundle` to install all gems listed in the gemfile
+* Run `rails db:create && db:migrate` to create and migrate the database (If you are on a windows machine, you will need to make sure your PostgreSQL server is running. You can easily manage this in the PGAdmin desktop application.)
+* Run `rails s` to run the server
+* On Your front-end folder run `npm install && npm start` to install all dependecies listed in the package.json file and start the server and run the application in the browser.
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
-
+Project is: _in progress_ . I intend to add more features to this application as I learn new skills.
 
 ## Acknowledgements
 Give credit here.
@@ -80,7 +47,7 @@ Give credit here.
 
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [@iamme24cl](https://github.com/iamme24cl) - feel free to contact me!
 
 
 <!-- Optional -->
