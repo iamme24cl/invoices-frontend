@@ -152,6 +152,15 @@ h1 {
   right: 15px;
 }
 
+.invoice-search-bar {
+  width: 300px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+
+
+
 .plus-btn {
   padding-right: 10px;
 }
