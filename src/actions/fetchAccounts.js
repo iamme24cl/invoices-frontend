@@ -1,6 +1,6 @@
 export const fetchAccounts = ()  => {
   return (dispatch) => {
-    fetch('http://localhost:3000/api/v1/accounts')
+    fetch('https://stark-woodland-38333.herokuapp.com/api/v1/accounts')
     .then(resp => resp.json())
     .then(accounts => dispatch({
       type: 'FETCH_ACCOUNTS',

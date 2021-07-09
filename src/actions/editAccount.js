@@ -1,6 +1,6 @@
 export const editAccount = (data, accountId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/accounts/${accountId}`, {
+    fetch(`https://stark-woodland-38333.herokuapp.com/api/v1/accounts/${accountId}`, {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'

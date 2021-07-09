@@ -1,7 +1,7 @@
 export const deleteInvoice = (invoiceId, accountId) => {
 
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/accounts/${accountId}/invoices/${invoiceId}`, {
+    fetch(`https://stark-woodland-38333.herokuapp.com/${accountId}/invoices/${invoiceId}`, {
       method: 'DELETE'
     })
     .then(response => response.json())

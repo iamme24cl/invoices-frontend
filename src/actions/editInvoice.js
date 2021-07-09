@@ -1,6 +1,6 @@
 export const editInvoice = (data, accountId, invoiceId) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/accounts/${accountId}/invoices/${invoiceId}`, {
+    fetch(`https://stark-woodland-38333.herokuapp.com/api/v1/accounts/${accountId}/invoices/${invoiceId}`, {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'

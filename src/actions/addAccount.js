@@ -2,7 +2,7 @@ export const addAccount = (data) => {
   console.log('b')
   return (dispatch) => {
     console.log('c')
-    fetch('http://localhost:3000/api/v1/accounts', {
+    fetch('https://stark-woodland-38333.herokuapp.com/api/v1/accounts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
