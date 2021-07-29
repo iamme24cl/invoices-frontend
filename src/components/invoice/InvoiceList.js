@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useHistory } from 'react-router-dom'
 import Moment from 'react-moment';
 
 
@@ -7,12 +7,17 @@ const InvoiceList = (props) => {
   let accountlLink =  props.account ? `/accounts/${props.account.id}/invoices/new` : null
   let accountEditLink = props.account ? `/accounts/${props.account.id}/edit` : null
   const invoices = props.invoices;
-
+  
+  const history = useHistory();
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
+
+  const handleClick = (path) => {
+    history.push(path)
+  }
 
   let filteredInvoices = !searchTerm
     ? invoices
@@ -58,8 +63,6 @@ const InvoiceList = (props) => {
         />
       </div>
       
-      
-
       <div className="table-responsive invoice-list">
         <table className="table table-hover invoice-table">
           <thead>
@@ -79,7 +82,7 @@ const InvoiceList = (props) => {
               let invoicePath = `/accounts/${invoice.account.id}/invoices/${invoice.id}`;
             
               return (
-                <tr key={invoice.id}>
+                <tr onClick={() => handleClick(invoicePath)} key={invoice.id}>
                   <td>{invoice.random_code + invoice.id}</td>
                   <td>{invoice.description}</td>
                   <td><Moment format="LL">{invoice.payment_due}</Moment></td>
@@ -93,12 +96,7 @@ const InvoiceList = (props) => {
                       : "not-paid status" }
                   >
                     {invoice.status}
-                  </td>
-                  <td>
-                    <Link to={invoicePath} className="view-btn">
-                      <i class="fa fa-eye" aria-hidden="true"></i>
-                    </Link>
-                  </td>              
+                  </td>       
                 </tr>
               )
             })}

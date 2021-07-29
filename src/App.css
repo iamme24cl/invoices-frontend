@@ -169,6 +169,10 @@ h1 {
   cursor: pointer;
 }
 
+.table.table-hover.invoice-table  {
+  width: 100%
+}
+
 
 .btn.btn-success.add-btn, .btn.btn-danger.minus-btn {
   margin-top: 25px;
@@ -358,3 +362,6 @@ h1 {
   background: #fff;
   border-color: #d9dfe3;
 }
+
+
+
