@@ -2,6 +2,11 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const Accounts = (props) => {
+  if (props.accounts.length === 0) {
+    return (
+      <h3>Loading Accounts....</h3>
+    );
+  }
   return (
     <div>
       {props.accounts.map(account => {
