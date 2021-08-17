@@ -33,12 +33,5 @@ class App extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     accounts: state.accounts
-//   }
-// }
-
-// Second argument for connect can be mapStateToProps or an action craetor eg. {fetchAccounts} => gives access to this.props.fetchAccounts()
 export default App;
  

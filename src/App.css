@@ -358,3 +358,9 @@ h1 {
   background: #fff;
   border-color: #d9dfe3;
 }
+
+@media screen and (max-width: 600px) {
+  .accounts-container {
+    width: 300px;
+  }
+}
