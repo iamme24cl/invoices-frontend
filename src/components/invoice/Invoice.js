@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {deleteInvoice} from '../../actions/deleteInvoice'
 import Moment from 'react-moment'
 import html2pdf from 'html2pdf.js'
+import './Invoice.css'
 
 class Invoice  extends React.Component {
   constructor(props) {

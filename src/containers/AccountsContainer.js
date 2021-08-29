@@ -7,6 +7,7 @@ import AccountEdit from '../components/account/AccountEdit'
 import Accounts from '../components/account/Accounts'
 import Account from '../components/account/Account'
 import HomePage from '../components/HomePage'
+import './AccountsContainer.css'
 
 
 class AccountsContainer extends React.Component {

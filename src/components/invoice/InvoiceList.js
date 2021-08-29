@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Link, useHistory } from 'react-router-dom'
 import Moment from 'react-moment';
+import './InvoiceList.css'
 
 
 const InvoiceList = (props) => {

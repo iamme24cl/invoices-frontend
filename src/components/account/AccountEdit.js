@@ -1,6 +1,7 @@
 import React from 'react' 
 import {connect} from 'react-redux'
 import {editAccount} from '../../actions/editAccount'
+import './AccountEdit.css'
 
 class AccountEdit extends React.Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class AccountEdit extends React.Component {
 
   render() {
     return (
-      <div className="modal-container new-account-form">
+      <div className="modal-container update-account-form">
         <div className="form-modal">
           <div className="form-header">
             <h4>Edit Account</h4>

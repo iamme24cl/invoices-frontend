@@ -1,0 +1,17 @@
+.accounts-container {
+  background-color: rgba(200, 200, 200, 0.2);
+  border: 2px solid rgba(200, 200, 200, 0.6);
+  border-radius: 10px;
+  margin-top: 80px;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
+
+.account-link {
+  text-decoration: none;
+  color: gray;
+}

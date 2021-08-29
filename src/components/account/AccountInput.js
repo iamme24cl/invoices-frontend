@@ -1,6 +1,7 @@
 import React from 'react' 
 import {connect} from 'react-redux'
 import {addAccount} from '../../actions/addAccount'
+import './AccountInput.css'
 
 class AccountInput extends React.Component {
   constructor(props) {

@@ -1,5 +1,6 @@
 import React from 'react' 
 import {Link} from 'react-router-dom'
+import './Accounts.css'
 
 const Accounts = (props) => {
   if (props.accounts.length === 0) {

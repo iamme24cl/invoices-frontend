@@ -1,12 +1,9 @@
 import React from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import {connect} from 'react-redux'
-// import {fetchAccounts} from './actions/fetchAccounts'
 import AccountsContainer from './containers/AccountsContainer'
 import NavBar from './components/NavBar'
 import Header from './components/Header'
-
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends React.Component {
