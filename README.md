@@ -1,5 +1,9 @@
 # Invoices
 > This application creates and manages Invoices for an account.
+> ## General Information
+- Create, update and delete invoices.
+- Easily create and manage invices for your Clients, download the invoice as pdf onto your computer, or direct it to the printer.
+- User is able to filter invoices by Client name or desciption of invoice.
 
 > This is the front end. Here is the link to the back end https://github.com/iamme24cl/invoices-backend
 
@@ -8,24 +12,20 @@
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
-* [Setup](#setup)
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Contact](#contact)
 
 
-## General Information
-- Create, update and delete invoices.
-- Easily manage invoicing your Clients, download the invoice as pdf onto your computer or print it out on paper.
-- I built this application to practice building a dynamic web application using React and Redux.
-
 ## Technologies Used
-Ruby on Rails
-React
-Redux
+### Frontend
+* React
+* Redux
+* BootStrap
+### Backend 
+* Ruby on Rails
+* PostgreSQL
 
-## Setup
-All depencies are listed in package.json file. Run `npm install` to install all dependencies
 
 ## Usage
 * Clone this backend repository to your machine  https://github.com/iamme24cl/invoices-backend
@@ -34,8 +34,6 @@ All depencies are listed in package.json file. Run `npm install` to install all 
 * Run `rails s` to run the server
 * On Your front-end folder run `npm install && npm start` to install all dependecies listed in the package.json file and start the server and run the application in the browser.
 
-## Project Status
-Project is: _in progress_ . I intend to add more features to this application as I learn new skills.
 
 ## Contact
 Created by [@iamme24cl](https://github.com/iamme24cl) - feel free to contact me!
