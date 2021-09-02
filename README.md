@@ -7,7 +7,7 @@
 
 > This is the front end. Here is the link to the back end https://github.com/iamme24cl/invoices-backend
 
-> Live demo [_here_](https://www.loom.com/share/5e6c1d5a44764bf68c366c3db1350c6e). 
+> Live demo hosted on heroku [_here_](https://my-invoices.netlify.app/). 
 
 ## Table of Contents
 * [General Info](#general-information)
