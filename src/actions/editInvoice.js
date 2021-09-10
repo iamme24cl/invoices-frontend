@@ -1,6 +1,9 @@
+import CONSTANTS from '../utils/constants';
+const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
+
 export const editInvoice = (data, accountId, invoiceId) => {
   return (dispatch) => {
-    fetch(`https://stark-woodland-38333.herokuapp.com/api/v1/accounts/${accountId}/invoices/${invoiceId}`, {
+    fetch(`${DEV_URL}/${accountId}/invoices/${invoiceId}`, {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'

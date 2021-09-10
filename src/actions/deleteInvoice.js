@@ -1,7 +1,10 @@
+import CONSTANTS from '../utils/constants';
+const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
+
 export const deleteInvoice = (invoiceId, accountId) => {
 
   return (dispatch) => {
-    fetch(`https://stark-woodland-38333.herokuapp.com/${accountId}/invoices/${invoiceId}`, {
+    fetch(`${DEV_URL}/${accountId}/invoices/${invoiceId}`, {
       method: 'DELETE'
     })
     .then(response => response.json())

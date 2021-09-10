@@ -1,8 +1,11 @@
+import CONSTANTS from '../utils/constants';
+const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
+
 export const addAccount = (data) => {
   console.log('b')
   return (dispatch) => {
     console.log('c')
-    fetch('https://stark-woodland-38333.herokuapp.com/api/v1/accounts', {
+    fetch(DEV_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

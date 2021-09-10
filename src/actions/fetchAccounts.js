@@ -1,6 +1,9 @@
+import CONSTANTS from '../utils/constants';
+const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
+
 export const fetchAccounts = ()  => {
   return (dispatch) => {
-    fetch('https://stark-woodland-38333.herokuapp.com/api/v1/accounts')
+    fetch(DEV_URL)
     .then(resp => resp.json())
     .then(accounts => dispatch({
       type: 'FETCH_ACCOUNTS',
@@ -8,3 +11,4 @@ export const fetchAccounts = ()  => {
     }))    
   }
 }
+
