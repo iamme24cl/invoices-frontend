@@ -54,7 +54,7 @@ class Invoice  extends React.Component {
                     <div className="m-t-5 m-b-5">
                         <strong className="text-inverse">{invoice.account.accountname}, Inc.</strong><br />
                         {address[0]}<br />
-                        {address[1]}, {address[2]},<br />
+                        {address[1]}, {address[2]}<br />
                         {address[3]}<br />
                         {/* Email: */}
                     </div>
@@ -138,18 +138,12 @@ class Invoice  extends React.Component {
               <div className="invoice-note">
                   * Make all cheques payable to {invoice.account.accountname}<br />
                   * Payment is due within 30 days<br />
-                  * If you have any questions concerning this invoice, contact Cool Lama at clama@mail.com
               </div>
               {/* <!-- end invoice-note --> */}
               {/* <!-- begin invoice-footer --> */}
               <div className="invoice-footer">
                   <p className="text-center m-b-5 f-w-600">
                     THANK YOU FOR YOUR BUSINESS
-                  </p>
-                  <p className="text-center">
-                    <span className="m-r-10"><i className="fa fa-fw fa-lg fa-globe"></i> coollama.com</span>
-                    <span className="m-r-10"><i className="fa fa-fw fa-lg fa-phone-volume"></i> T:016-18772302</span>
-                    <span className="m-r-10"><i className="fa fa-fw fa-lg fa-envelope"></i> clama@mail.com</span>
                   </p>
               </div>
               {/* <!-- end invoice-footer --> */}
