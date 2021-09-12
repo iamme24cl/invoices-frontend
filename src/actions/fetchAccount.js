@@ -1,13 +1,13 @@
 import CONSTANTS from '../utils/constants';
 const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
 
-export const fetchAccounts = ()  => {
+export const fetchAccount = (id)  => {
   return (dispatch) => {
-    fetch(DEV_URL)
+    fetch(`${DEV_URL}/${id}`)
     .then(resp => resp.json())
-    .then(accounts => dispatch({
-      type: 'FETCH_ACCOUNTS',
-      payload: accounts
+    .then(account => dispatch({
+      type: 'FETCH_ACCOUNT',
+      payload: account
     }))    
   }
 }

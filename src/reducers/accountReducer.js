@@ -1,63 +1,40 @@
-const accountReducer = (state = {accounts: []}, action) => {
+const accountReducer = (state = {isloggedIn: false, account: {}}, action) => {
   switch (action.type) {
-    case 'FETCH_ACCOUNTS': {
-      return {accounts: action.payload}
+    case 'FETCH_ACCOUNT': {
+      return {account: action.payload};
     }
 
     case 'ADD_ACCOUNT': {
-      return {...state, accounts: [...state.accounts, action.payload]}
+      return {...state, account: action.payload};
 
     }
 
     case 'EDIT_ACCOUNT': {
-      let accounts = state.accounts.map(account => {
-        if (account.id === action.payload.id) {
-          return action.payload
-        } else {
-          return account
-        }
-      })
-      return {...state, accounts: accounts}
+      return {...state, account: account(state, action)};
     }
       
     case 'ADD_INVOICE': {
-      let accounts1 = state.accounts.map(account => {
-        if (account.id === action.payload.id) {
-          return action.payload
-        } else {
-          return account
-        }
-      })
-      return {...state, accounts: accounts1}
+      return {...state, account: account(state, action)};
     }
       
     case 'EDIT_INVOICE': {
-      let accounts2 = state.accounts.map(account => {
-        if (account.id === action.payload.id) {
-          return action.payload
-        } else {
-          return account
-        }
-      })
-      return {...state, accounts: accounts2}
+      return {...state, account: account(state, action)};
     }
       
     case 'DELETE_INVOICE': {
-      let accounts3 = state.accounts.map(account => {
-        if (account.id === action.payload.id) {
-          return action.payload
-        } else {
-          return account
-        }
-      })
-      return {...state, accounts: accounts3}   
+      return {...state, account: account(state, action)};   
     }
       
     default: {
-      return state
+      return state;
     }
   }
 
+}
+
+const account = (state, action) => {
+  let tempAccount = state.account.id === action.payload.id ? action.payload : state.account;
+  return tempAccount;
 }
 
 export default accountReducer;

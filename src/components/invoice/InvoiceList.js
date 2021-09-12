@@ -5,8 +5,8 @@ import './InvoiceList.css'
 
 
 const InvoiceList = (props) => {
-  let accountlLink =  props.account ? `/accounts/${props.account.id}/invoices/new` : null
-  let accountEditLink = props.account ? `/accounts/${props.account.id}/edit` : null
+  let newInvoiceLink =  props.account ? `/accounts/${props.account.id}/invoices/new` : null
+  
   const invoices = props.invoices;
   
   const history = useHistory();
@@ -31,21 +31,8 @@ const InvoiceList = (props) => {
   
   return (
     <div className="invoice-list-container">
-   
-      <h2>
-        {props.account && props.account.accountname}
-        <Link 
-          to={accountEditLink} 
-          className="btn btn-sm edit-account-btn"
-        >
-          <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
-        </Link>
-      </h2>
-
-      <p>There are {props.account && props.account.invoices.length} total Invoices</p>
-      
       <Link 
-        to={accountlLink} 
+        to={newInvoiceLink} 
         className="btn btn-dark new-invoice-btn"
       >
         <i className="fa fa-plus plus-btn" aria-hidden="true"></i>

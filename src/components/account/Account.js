@@ -1,13 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom'
 import InvoicesContainer from '../../containers/InvoicesContainer'
 
 const Account = (props) => {
-  // let account = props.accounts[props.match.params.id - 1]
-  let account = props.accounts.filter(account => account.id == props.match.params.id)[0]
-
+  let accountEditLink = props.account ? `/accounts/${props.account.id}/edit` : null
   return (
     <div>
-      <InvoicesContainer account={account ? account: null}/>
+       <h2>
+        {props.account && props.account.accountname}
+        <Link 
+          to={accountEditLink} 
+          className="btn btn-sm edit-account-btn"
+        >
+          <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+        </Link>
+      </h2>
+      
+      <InvoicesContainer account={props.account}/>
     </div>
   )
 }

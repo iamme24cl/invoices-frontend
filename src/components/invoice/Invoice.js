@@ -16,7 +16,7 @@ class Invoice  extends React.Component {
   handleDelete(invoice) {
     // debugger
     this.props.deleteInvoice(invoice.id, invoice.account.id)
-    this.props.history.push(`/accounts/${invoice.account.id}`)
+    this.props.history.push(`/accounts/${invoice.account.id}/invoices`)
   }
 
   generatePDF() {

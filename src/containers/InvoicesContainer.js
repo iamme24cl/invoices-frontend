@@ -6,6 +6,9 @@ import InvoiceList from '../components/invoice/InvoiceList'
 import Invoice from '../components/invoice/Invoice'
 
 class InvoicesContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
@@ -26,7 +29,7 @@ class InvoicesContainer extends React.Component {
           />
           
           <Route 
-            path='/accounts/:id' 
+            path='/accounts/:id/invoices' 
             render={() =>  <InvoiceList account={this.props.account} invoices={this.props.account && this.props.account.invoices} />  } 
           /> 
         </Switch>     

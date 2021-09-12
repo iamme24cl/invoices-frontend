@@ -61,7 +61,7 @@ class InvoiceInput extends React.Component {
       ]
     })
     event.target.reset()
-    this.props.history.push(`/accounts/${this.props.account.id}`)
+    this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
   }
 
   addItem(event) {

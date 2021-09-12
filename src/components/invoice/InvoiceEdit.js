@@ -48,7 +48,7 @@ class InvoiceEdit extends React.Component {
     event.preventDefault();
     this.props.editInvoice(this.state, invoice.account.id,  invoice.id)
 
-    this.props.history.push(`/accounts/${invoice.account.id}`)
+    this.props.history.push(`/accounts/${invoice.account.id}/invoices`)
   }
 
   render() {
