@@ -1,9 +1,22 @@
 .home-img {
+  background-image: url("./financial-4560047_1280.jpg");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.home-page-buttons {
+  /*background-color: rgba(200, 200, 200, 0.2);*/
+  /*border: 2px solid rgba(200, 200, 200, 0.6);*/
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-  border-bottom-left-radius: 50px;
-  border-top-right-radius: 50px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  width: 600px;
 }
+

@@ -1,5 +1,9 @@
 const accountReducer = (state = {isloggedIn: false, account: {}}, action) => {
   switch (action.type) {
+    case 'CHECK_LOGIN_STATUS': {
+      return {...state, isloggedIn: action.payload.isloggedIn, account: action.payload.account}
+    }
+
     case 'FETCH_ACCOUNT': {
       return {account: action.payload};
     }

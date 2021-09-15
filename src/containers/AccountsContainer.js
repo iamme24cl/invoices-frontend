@@ -1,18 +1,31 @@
-import React from 'react' 
-import {connect} from 'react-redux'
-import {Route, Switch} from 'react-router-dom'
-import {fetchAccount} from '../actions/fetchAccount'
-import AccountInput from '../components/account/AccountInput'
-import AccountEdit from '../components/account/AccountEdit'
-import Account from '../components/account/Account'
-import HomePage from '../components/HomePage'
-import './AccountsContainer.css'
+import React from 'react'; 
+import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { checkLoginStatus } from '../actions/checkLoginStatus';
+import { fetchAccount } from '../actions/fetchAccount';
+import AccountInput from '../components/account/AccountInput';
+import AccountEdit from '../components/account/AccountEdit';
+import Account from '../components/account/Account';
+import HomePage from '../components/HomePage';
+import './AccountsContainer.css';
 
 
 class AccountsContainer extends React.Component {
 
   componentDidMount() {
-    this.props.fetchAccount(1)
+    const userData = {
+      email: "cool@mail.com",
+      password: "testing"
+    }
+    // this.props.fetchAccount(userData);
+    this.props.checkLoginStatus();
+    setTimeout(() => {
+      if (Object.keys(this.props.account).length !== 0) {
+        this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
+      } else {
+        this.props.history.push('/login')
+      }
+    }, 1000)
   }
 
   render() {
@@ -57,8 +70,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAccount: (id) => dispatch(fetchAccount(id))
+    fetchAccount: (id) => dispatch(fetchAccount(id)),
+    checkLoginStatus: () => dispatch(checkLoginStatus())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountsContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountsContainer));
