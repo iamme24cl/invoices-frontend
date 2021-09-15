@@ -1,16 +1,14 @@
 import React from 'react' 
 import {connect} from 'react-redux'
-import {addAccount} from '../../actions/addAccount'
-import './AccountInput.css'
+import {fetchAccount} from '../../actions/fetchAccount'
+import './Login.css'
 
-class AccountInput extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      accountname: '',
       email: '',
       password: '',
-      address: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,14 +23,10 @@ class AccountInput extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('a')
-    this.props.addAccount(this.state)
-    console.log('f')
+    this.props.fetchAccount(this.state)
     this.setState({
-      accountname: '',
       email: '',
       password: '',
-      address: ''
     })
     
     this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
@@ -40,30 +34,22 @@ class AccountInput extends React.Component {
 
   render() {
     return (
-      <div className="modal-container new-account-form">
+      <div className="modal-container login-account-form">
         <div className="form-modal">
           <div className="form-header">
-            <h4>New Account</h4>
+            <h4>Login</h4>
           </div>
 
           <form onSubmit={this.handleSubmit} className="modal-form" >
             <div className="form-group">
-              <label>Account Name</label>
-              <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/>
-            </div>
-            <div className="form-group">
               <label>Email</label>
-              <input type="text" placeholder="User Name" value={this.state.email} name="email" onChange={this.handleChange} className="form-control"/>
+              <input type="text" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} className="form-control"/>
             </div>
             <div className="form-group">
               <label>Password</label>
               <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/>
             </div>
-            <div className="form-group">
-              <label>Address</label>
-              <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange} className="form-control"/>
-            </div>
-
+            
             <div className="form-group">
               <input type="submit" className="cta-btn btn btn-dark submit-btn"/>    
             </div>
@@ -77,4 +63,4 @@ class AccountInput extends React.Component {
   }
 }
 
-export default connect(null, {addAccount})(AccountInput);
+export default connect(null, {fetchAccount})(Login);

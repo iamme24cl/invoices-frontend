@@ -1,17 +1,24 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { fetchAccount } from '../actions/fetchAccount'
 import './HomePage.css';
 
 class HomePage extends React.Component {
   
-  handleLogin = () => {
+  handleDemoLogin = () => {
     const userData = {
       email: "cool@mail.com",
       password: "testing"
     }
     this.props.fetchAccount(userData);
+    setTimeout(() => {
+      if (Object.keys(this.props.account).length !== 0) {
+        this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
+      } else {
+        this.props.history.push('/login')
+      }
+    }, 1000)
   }
 
   render() {
@@ -22,13 +29,13 @@ class HomePage extends React.Component {
           </div>
           <div className="row">
             <div className="col home-page-buttons my-3">
-              <button onClick={this.handleLogin} className="btn btn-primary mx-3">Login</button>
+              <Link to="/login" className="btn btn-primary mx-3">Login</Link>
 
               <Link to="/accounts/new" className="btn btn-primary mx-3">Sign Up</Link>
 
               <span className="mx-3">OR USE</span>
 
-              <button className="btn btn-success m-x-3">Demo Account</button>
+              <button onClick={this.handleDemoLogin.bind(this)} className="btn btn-success m-x-3">Demo Account</button>
             </div>
           </div>
         </div>
@@ -36,11 +43,6 @@ class HomePage extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchAccount: (userData) => dispatch(fetchAccount(userData))
-  }
-}
 
 
-export default connect(mapDispatchToProps)(HomePage);
+export default connect(null, {fetchAccount})(HomePage);

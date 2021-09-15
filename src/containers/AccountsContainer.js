@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { checkLoginStatus } from '../actions/checkLoginStatus';
 import { fetchAccount } from '../actions/fetchAccount';
+import Login from '../components/account/Login'
 import AccountInput from '../components/account/AccountInput';
 import AccountEdit from '../components/account/AccountEdit';
 import Account from '../components/account/Account';
@@ -13,17 +14,13 @@ import './AccountsContainer.css';
 class AccountsContainer extends React.Component {
 
   componentDidMount() {
-    const userData = {
-      email: "cool@mail.com",
-      password: "testing"
-    }
     // this.props.fetchAccount(userData);
     this.props.checkLoginStatus();
     setTimeout(() => {
       if (Object.keys(this.props.account).length !== 0) {
         this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
       } else {
-        this.props.history.push('/login')
+        this.props.history.push('/')
       }
     }, 1000)
   }
@@ -35,7 +32,7 @@ class AccountsContainer extends React.Component {
           <Switch>
             <Route 
               path='/accounts/new' 
-              component={AccountInput}
+              render={(routerProps) => <AccountInput {...routerProps} account={this.props.account}/>}
             />
 
             <Route 
@@ -49,12 +46,13 @@ class AccountsContainer extends React.Component {
             />
 
             <Route 
-              path='/login' 
+              path='/login'
+              render={(routerProps) => <Login {...routerProps} account={this.props.account}/>} 
             />
 
             <Route 
               path="/" 
-              component={HomePage} 
+              render={(routerProps) => <HomePage {...routerProps} account={this.props.account} />}
             />
           </Switch>
       </div>
