@@ -14,11 +14,13 @@ class AccountEdit extends React.Component {
     if (account) {
       this.state = {
         accountname: account.accountname,
+        email: account.email,
         address: account.address
       }
     } else {
       this.state = {
         accountname: '',
+        email: '',
         address: ''
       }
     }
@@ -36,9 +38,11 @@ class AccountEdit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let account = this.props.account[0];
+    let account = this.props.account;
     this.props.editAccount(this.state, account.id)
-    this.props.history.push(`/accounts/${account.id}`)
+    setTimeout(() => {
+      this.props.history.push(`/accounts/${account.id}`)
+    }, 1000)
   }
 
   render() {
@@ -52,7 +56,12 @@ class AccountEdit extends React.Component {
           <form onSubmit={this.handleSubmit} className="modal-form" >
             <div className="form-group">
               <label>Account Name</label>
-              <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/>
+              <input type="text" placeholder="Account Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/>
+            </div>
+
+            <div className="form-group">
+              <label>Email</label>
+              <input type="text" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} className="form-control"/>
             </div>
            
             <div className="form-group">

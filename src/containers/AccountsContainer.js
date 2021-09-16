@@ -52,7 +52,7 @@ class AccountsContainer extends React.Component {
 
             <Route 
               path="/" 
-              render={(routerProps) => <HomePage {...routerProps} account={this.props.account} />}
+              render={(routerProps) => <HomePage {...routerProps} account={this.props.account} loggedIn={this.props.loggedIn} />}
             />
           </Switch>
       </div>
@@ -62,6 +62,7 @@ class AccountsContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    loggedIn: state.loggedIn,
     account: state.account
   }
 }

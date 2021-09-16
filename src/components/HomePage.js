@@ -22,21 +22,25 @@ class HomePage extends React.Component {
   }
 
   render() {
+    const loggedIn = this.props.loggedIn;
+
       return (
         <div className="container-fluid">
           <div className="row">
             <div className="col home-img"></div>
           </div>
           <div className="row">
-            <div className="col home-page-buttons my-3">
-              <Link to="/login" className="btn btn-primary mx-3">Login</Link>
+            {loggedIn === false &&
+              <div className="col home-page-buttons my-3">
+                <Link to="/login" className="btn btn-primary mx-3">Login</Link>
 
-              <Link to="/accounts/new" className="btn btn-primary mx-3">Sign Up</Link>
+                <Link to="/accounts/new" className="btn btn-primary mx-3">Sign Up</Link>
 
-              <span className="mx-3">OR USE</span>
+                <span className="mx-3">OR USE</span>
 
-              <button onClick={this.handleDemoLogin.bind(this)} className="btn btn-success m-x-3">Demo Account</button>
-            </div>
+                <button onClick={this.handleDemoLogin.bind(this)} className="btn btn-success m-x-3">Demo Account</button>
+              </div>
+            }
           </div>
         </div>
       )

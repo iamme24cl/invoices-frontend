@@ -34,8 +34,10 @@ class AccountInput extends React.Component {
       password: '',
       address: ''
     })
-    
-    this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
+    setTimeout(() => {
+      console.log('g')
+      this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
+    }, 1000)
   }
 
   render() {

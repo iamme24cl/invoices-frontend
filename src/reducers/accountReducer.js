@@ -1,15 +1,15 @@
-const accountReducer = (state = {isloggedIn: false, account: {}}, action) => {
+const accountReducer = (state = {loggedIn: false, account: {}}, action) => {
   switch (action.type) {
     case 'CHECK_LOGIN_STATUS': {
-      return {...state, isloggedIn: action.payload.isloggedIn, account: action.payload.account}
+      return {...state, loggedIn: action.payload.loggedIn, account: action.payload.account}
     }
 
     case 'FETCH_ACCOUNT': {
-      return {account: action.payload};
+      return {loggedIn: action.payload.loggedIn, account: action.payload.account};
     }
 
     case 'ADD_ACCOUNT': {
-      return {...state, account: action.payload};
+      return {...state, loggedIn: action.payload.loggedIn, account: action.payload.account};
 
     }
 

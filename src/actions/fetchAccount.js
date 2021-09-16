@@ -16,11 +16,12 @@ export const fetchAccount = (userData)  => {
         console.log(account)
         let api_key = account.api_keys[account.api_keys.length - 1]
         localStorage.setItem("token", api_key.token);
-        localStorage.setItem("tokenID", api_key.token.id)
+        localStorage.setItem("tokenID", api_key.token.id);
+        localStorage.setItem("loggedIn", true);
         return dispatch({
-        type: 'FETCH_ACCOUNT',
-        payload: account
-      })
+          type: 'FETCH_ACCOUNT',
+          payload: {account: account, loggedIn: true}
+        })
     })    
   }
 }

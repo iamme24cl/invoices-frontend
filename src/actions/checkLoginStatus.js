@@ -15,9 +15,7 @@ export const checkLoginStatus = () => {
 				console.log(data);
 				return dispatch({
 					type: 'CHECK_LOGIN_STATUS',
-					payload: data.status !== 401 ? 
-						{isloggedIn: data.isloggedIn, account: data} : 
-						{isloggedIn: data.isloggedIn, account: {}}
+					payload: data.status !== 401 ? {account: data, loggedIn: true} : {}
 				})
 		})
 		.catch(error => console.log(error))

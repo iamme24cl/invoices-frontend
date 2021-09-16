@@ -47,6 +47,7 @@ class Invoice  extends React.Component {
                   {invoice.account.accountname}, Inc
               </div>
               {/* <!-- end invoice-company --> */}
+
               {/* <!-- begin invoice-header --> */}
               <div className="invoice-header">
                   <div className="invoice-from">
@@ -79,6 +80,7 @@ class Invoice  extends React.Component {
                   </div>
               </div>
               {/* <!-- end invoice-header --> */}
+
               {/* <!-- begin invoice-content --> */}
               <div className="invoice-content">
                   {/* <!-- begin table-responsive --> */}
@@ -110,6 +112,7 @@ class Invoice  extends React.Component {
                     </table>
                   </div>
                   {/* <!-- end table-responsive --> */}
+
                   {/* <!-- begin invoice-price --> */}
                   <div className="invoice-price">
                     <div className="invoice-price-left">
@@ -127,6 +130,7 @@ class Invoice  extends React.Component {
                           </div> */}
                         {/* </div> */}
                     </div>
+                    
                     <div className="invoice-price-right">
                         <small>TOTAL</small> <span className="f-w-600">${invoice.invoice_total}</span>
                     </div>
@@ -134,12 +138,14 @@ class Invoice  extends React.Component {
                   {/* <!-- end invoice-price --> */}
               </div>
               {/* <!-- end invoice-content --> */}
+
               {/* <!-- begin invoice-note --> */}
               <div className="invoice-note">
                   * Make all cheques payable to {invoice.account.accountname}<br />
                   * Payment is due within 30 days<br />
               </div>
               {/* <!-- end invoice-note --> */}
+
               {/* <!-- begin invoice-footer --> */}
               <div className="invoice-footer">
                   <p className="text-center m-b-5 f-w-600">
