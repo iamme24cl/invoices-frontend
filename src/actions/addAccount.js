@@ -20,7 +20,7 @@ export const addAccount = (data) => {
 
       let api_key = account.api_keys[account.api_keys.length - 1]
       localStorage.setItem("token", api_key.token);
-      localStorage.setItem("tokenID", api_key.token.id);
+      localStorage.setItem("tokenID", api_key.id);
       localStorage.setItem("loggedIn", true);
 
       return dispatch({

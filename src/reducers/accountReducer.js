@@ -28,6 +28,10 @@ const accountReducer = (state = {loggedIn: false, account: {}}, action) => {
     case 'DELETE_INVOICE': {
       return {...state, account: account(state, action)};   
     }
+
+    case 'LOGOUT': {
+      return {...state, loggedIn: action.payload.loggedIn, account: action.payload.account}
+    }
       
     default: {
       return state;
