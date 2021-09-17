@@ -4,7 +4,7 @@ const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
 export const checkLoginStatus = () => {
 	let token = localStorage.getItem("token");
 	return (dispatch) => {
-		fetch(`${DEV_URL}/api-keys`, {
+		fetch(`${LIVE_URL}/api-keys`, {
 			headers: {
 				'Accept': 'application/json',
 				'Authorization': `Bearer ${token}`

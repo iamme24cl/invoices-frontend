@@ -6,7 +6,7 @@ export const logout = () => {
   let tokenID = localStorage.getItem("tokenID")
 
 	return (dispatch) => {
-		fetch(`${DEV_URL}/api-keys/${tokenID}`, {
+		fetch(`${LIVE_URL}/api-keys/${tokenID}`, {
       method: 'DELETE',
 			headers: {
 				'Accept': 'application/json',

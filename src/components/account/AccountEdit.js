@@ -41,7 +41,7 @@ class AccountEdit extends React.Component {
     let account = this.props.account;
     this.props.editAccount(this.state, account.id)
     setTimeout(() => {
-      this.props.history.push(`/accounts/${account.id}`)
+      this.props.history.push(`/accounts/${account.id}/invoices`)
     }, 1000)
   }
 

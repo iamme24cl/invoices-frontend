@@ -5,7 +5,7 @@ export const addAccount = (data) => {
   console.log('b')
   return (dispatch) => {
     console.log('c')
-    fetch(`${DEV_URL}/accounts`, {
+    fetch(`${LIVE_URL}/accounts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -3,7 +3,7 @@ const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
 
 export const fetchAccount = (userData)  => {
   return (dispatch) => {
-    fetch(`${DEV_URL}/api-keys`, {
+    fetch(`${LIVE_URL}/api-keys`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

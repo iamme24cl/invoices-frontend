@@ -3,7 +3,7 @@ const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
 
 export const editInvoice = (data, accountId, invoiceId) => {
   return (dispatch) => {
-    fetch(`${DEV_URL}/accounts/${accountId}/invoices/${invoiceId}`, {
+    fetch(`${LIVE_URL}/accounts/${accountId}/invoices/${invoiceId}`, {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
