@@ -1,11 +1,10 @@
 .home-img {
   background-image: url("./financial-4560047_1280.jpg");
   background-color: #cccccc;
-  height: 500px;
+  height: 400px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 10px;
 }
 
 .home-page-buttons {
@@ -18,5 +17,12 @@
   margin-left: auto;
   margin-right: auto;
   width: 600px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+#home-page {
+  font-family: 'Architects Daughter', cursive;
+  font-weight: bold;
 }
 

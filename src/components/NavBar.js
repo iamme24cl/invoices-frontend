@@ -15,24 +15,28 @@ const NavBar = (props) => {
 
   return (
     <div>
-      <nav id="navbar">
-        <div className="logo">
-          <img src="/Photo_1619833647159_Processed.png" alt="user" />
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid">
+          <Link id="logo" className="navbar-brand" to="/">INVOICES</Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            {props.loggedIn === false &&
+              <div className="navbar-nav">
+                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link" to="/login">Login</Link>
+                <Link className="nav-link" to="/accounts/new">Sign Up</Link>
+              </div>
+            }
+            {props.loggedIn &&
+              <div className="navbar-nav">
+                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link" onClick={handleLogout}>Logout</Link>
+              </div>
+            }
+\         </div>
         </div>
-        {props.loggedIn === false &&
-          <ul className="nav-li">
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/accounts/new">Sign Up</Link></li>
-          </ul>
-        }
-        {props.loggedIn &&
-          <ul className="nav-li">
-            <li><Link to='/'>Home</Link></li>
-            <li><button className="btn btn-danger" onClick={handleLogout}>Logout</button></li>
-          </ul>
-        }
-        
       </nav>
     </div>    
   )

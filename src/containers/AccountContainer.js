@@ -27,7 +27,7 @@ class AccountContainer extends React.Component {
   render() {
    
     return (
-      <div onClick={this.props.onClick} className="container">
+      <div>
           <Switch>
             <Route 
               path='/accounts/new' 
