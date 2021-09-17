@@ -39,14 +39,18 @@ class HomePage extends React.Component {
             }
           </div>
           <div className="row">
-            <div className="col home-page-buttons">
-              <h4 id="home-page">Or Use</h4>
-            </div>
+            {loggedIn === false &&
+              <div className="col home-page-buttons">
+                <h4 id="home-page">Or Use</h4>
+              </div>
+            }
           </div>
           <div className="row">
-            <div className="col home-page-buttons">
-              <button onClick={this.handleDemoLogin.bind(this)} className="btn btn-success m-x-3">Demo Account</button>
-            </div>
+            {loggedIn === false &&
+              <div className="col home-page-buttons">
+                <button onClick={this.handleDemoLogin.bind(this)} className="btn btn-success m-x-3">Demo Account</button>
+              </div>
+            }
           </div>
         </div>
       )
