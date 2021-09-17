@@ -28,8 +28,10 @@ class Login extends React.Component {
       email: '',
       password: '',
     })
-    
-    this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
+    setTimeout(() => {
+      console.log('g')
+      this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
+    }, 1000)
   }
 
   render() {
