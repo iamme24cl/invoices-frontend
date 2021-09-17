@@ -1,6 +1,7 @@
 import React from 'react' 
 import {connect} from 'react-redux'
 import {addAccount} from '../../actions/addAccount'
+import BackButton from '../../components/BackButton'
 import './AccountInput.css'
 
 class AccountInput extends React.Component {
@@ -42,38 +43,41 @@ class AccountInput extends React.Component {
 
   render() {
     return (
-      <div className="modal-container new-account-form">
-        <div className="form-modal">
-          <div className="form-header">
-            <h4>New Account</h4>
-          </div>
-
-          <form onSubmit={this.handleSubmit} className="modal-form" >
-            <div className="form-group">
-              <label>Account Name</label>
-              <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input type="text" placeholder="User Name" value={this.state.email} name="email" onChange={this.handleChange} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label>Address</label>
-              <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange} className="form-control"/>
-            </div>
-
-            <div className="form-group">
-              <input type="submit" className="cta-btn btn btn-dark submit-btn"/>    
-            </div>
-
-          </form>
-
+      <div className="container">
+        <div className="row justify-content-end">
+          <div className="col-1"><BackButton /></div>
         </div>
-        
+
+        <div className="modal-container new-account-form">
+          <div className="form-modal">
+            <div className="form-header">
+              <h4>New Account</h4>
+            </div>
+
+            <form onSubmit={this.handleSubmit} className="modal-form" >
+              <div className="form-group">
+                <label>Account Name</label>
+                <input type="text" placeholder="User Name" value={this.state.accountname} name="accountname" onChange={this.handleChange} className="form-control"/>
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input type="text" placeholder="User Name" value={this.state.email} name="email" onChange={this.handleChange} className="form-control"/>
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/>
+              </div>
+              <div className="form-group">
+                <label>Address</label>
+                <textarea placeholder="Address" value={this.state.address} name="address" onChange={this.handleChange} className="form-control"/>
+              </div>
+
+              <div className="form-group">
+                <input type="submit" className="cta-btn btn btn-dark submit-btn"/>    
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     )
   }

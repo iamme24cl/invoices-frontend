@@ -32,9 +32,9 @@ class HomePage extends React.Component {
           <div className="row">
             {loggedIn === false &&
               <div className="col home-page-buttons my-3">
-                <Link to="/login" className="btn btn-primary mx-3">Login</Link>
+                <Link to="/login" className="btn btn-dark mx-3">Login</Link>
 
-                <Link to="/accounts/new" className="btn btn-primary mx-3">Sign Up</Link>                
+                <Link to="/accounts/new" className="btn btn-dark mx-3">Sign Up</Link>                
               </div>
             }
           </div>
@@ -48,7 +48,7 @@ class HomePage extends React.Component {
           <div className="row">
             {loggedIn === false &&
               <div className="col home-page-buttons">
-                <button onClick={this.handleDemoLogin.bind(this)} className="btn btn-success m-x-3">Demo Account</button>
+                <button onClick={this.handleDemoLogin.bind(this)} className="btn btn-dark m-x-3">Demo Account</button>
               </div>
             }
           </div>

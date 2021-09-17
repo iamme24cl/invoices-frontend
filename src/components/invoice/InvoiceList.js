@@ -8,7 +8,6 @@ const InvoiceList = (props) => {
   let newInvoiceLink =  props.account ? `/accounts/${props.account.id}/invoices/new` : null
   
   const invoices = props.invoices;
-  
   const history = useHistory();
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -30,26 +29,31 @@ const InvoiceList = (props) => {
     })
   
   return (
-    <div className="invoice-list-container">
-      <Link 
-        to={newInvoiceLink} 
-        className="btn btn-dark new-invoice-btn"
-      >
-        <i className="fa fa-plus plus-btn" aria-hidden="true"></i>
-        New Invoice
-      </Link>
+    <div className="invoice-list-container container">
+      <div className="row">
+        <div className="col">
+          <label style={{fontWeight: 'bold'}}>Filter Invoices ➜</label>
+        
+          <input
+            type="text"
+            placeholder="Description Or Client Name"
+            value={searchTerm}
+            onChange={handleChange}
+            className="invoice-search-bar"
+          />
+        </div>
 
-      <div>
-        <label style={{fontWeight: 'bold'}}>Filter Invoices ➜</label>
-      
-        <input
-          type="text"
-          placeholder="Description Or Client Name"
-          value={searchTerm}
-          onChange={handleChange}
-          className="invoice-search-bar"
-        />
+        <div className="col">
+          <Link 
+            to={newInvoiceLink} 
+            className="btn btn-dark new-invoice-btn"
+          >
+            <i className="fa fa-plus plus-btn" aria-hidden="true"></i>
+            New Invoice
+          </Link>
+        </div>
       </div>
+     
       
       <div className="table-responsive invoice-list">
         <table className="table table-hover invoice-table">

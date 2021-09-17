@@ -14,19 +14,19 @@ const accountReducer = (state = {loggedIn: false, account: {}}, action) => {
     }
 
     case 'EDIT_ACCOUNT': {
-      return {...state, account: account(state, action)};
+      return {...state, account: action.payload};
     }
       
     case 'ADD_INVOICE': {
-      return {...state, account: account(state, action)};
+      return {...state, account: action.payload};
     }
       
     case 'EDIT_INVOICE': {
-      return {...state, account: account(state, action)};
+      return {...state, account: action.payload};
     }
       
     case 'DELETE_INVOICE': {
-      return {...state, account: account(state, action)};   
+      return {...state, account: action.payload};   
     }
 
     case 'LOGOUT': {
@@ -40,9 +40,7 @@ const accountReducer = (state = {loggedIn: false, account: {}}, action) => {
 
 }
 
-const account = (state, action) => {
-  let tempAccount = state.account.id === action.payload.id ? action.payload : state.account;
-  return tempAccount;
-}
-
 export default accountReducer;
+
+
+

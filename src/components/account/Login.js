@@ -1,6 +1,7 @@
 import React from 'react' 
 import {connect} from 'react-redux'
 import {fetchAccount} from '../../actions/fetchAccount'
+import BackButton from '../BackButton'
 import './Login.css'
 
 class Login extends React.Component {
@@ -36,30 +37,33 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="modal-container login-account-form">
-        <div className="form-modal">
-          <div className="form-header">
-            <h4>Login</h4>
-          </div>
-
-          <form onSubmit={this.handleSubmit} className="modal-form" >
-            <div className="form-group">
-              <label>Email</label>
-              <input type="text" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/>
-            </div>
-            
-            <div className="form-group">
-              <input type="submit" className="cta-btn btn btn-dark submit-btn"/>    
-            </div>
-
-          </form>
-
+      <div className="container">
+        <div className="row justify-content-end">
+          <div className="col-1"><BackButton /></div>
         </div>
         
+        <div className="modal-container login-account-form">
+          <div className="form-modal">
+            <div className="form-header">
+              <h4>Login</h4>
+            </div>
+
+            <form onSubmit={this.handleSubmit} className="modal-form" >
+              <div className="form-group">
+                <label>Email</label>
+                <input type="text" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} className="form-control"/>
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} className="form-control"/>
+              </div>
+              
+              <div className="form-group">
+                <input type="submit" className="cta-btn btn btn-dark submit-btn"/>    
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     )
   }

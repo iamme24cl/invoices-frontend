@@ -32,6 +32,7 @@ const NavBar = (props) => {
             {props.loggedIn &&
               <div className="navbar-nav">
                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link" to={`/accounts/${props.account.id}/invoices`}>My Invoices</Link>
                 <Link className="nav-link" onClick={handleLogout}>Logout</Link>
               </div>
             }

@@ -1,8 +1,5 @@
 .btn.btn-dark.new-invoice-btn {
   border-radius: 25px;
-  position: absolute;
-  top: 15px;
-  right: 15px;
 }
 
 .invoice-search-bar {
