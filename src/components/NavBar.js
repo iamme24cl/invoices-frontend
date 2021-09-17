@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { logout } from '../actions/logout';
 import './NavBar.css';
 
 const NavBar = (props) => {
+  let history = useHistory();
+
   const handleLogout = (id) => {
     props.logout();
-    
+    history.push("/")
+    localStorage.clear();
   }
-
 
   return (
     <div>

@@ -7,7 +7,7 @@ class AccountEdit extends React.Component {
   constructor(props) {
     super(props);
     
-    let account = this.props.account[0];
+    let account = this.props.account;
 
     // console.log(account)
 

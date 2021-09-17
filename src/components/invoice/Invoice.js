@@ -143,6 +143,7 @@ class Invoice  extends React.Component {
               <div className="invoice-note">
                   * Make all cheques payable to {invoice.account.accountname}<br />
                   * Payment is due within 30 days<br />
+                  * If you have any questions about the invoice please email {invoice.account.email}
               </div>
               {/* <!-- end invoice-note --> */}
 

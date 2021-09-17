@@ -8,13 +8,12 @@ import AccountInput from '../components/account/AccountInput';
 import AccountEdit from '../components/account/AccountEdit';
 import Account from '../components/account/Account';
 import HomePage from '../components/HomePage';
-import './AccountsContainer.css';
+import './AccountContainer.css';
 
 
-class AccountsContainer extends React.Component {
+class AccountContainer extends React.Component {
 
   componentDidMount() {
-    // this.props.fetchAccount(userData);
     this.props.checkLoginStatus();
     setTimeout(() => {
       if (Object.keys(this.props.account).length !== 0) {
@@ -74,4 +73,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountsContainer));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountContainer));

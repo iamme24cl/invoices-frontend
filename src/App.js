@@ -1,5 +1,5 @@
 import React from 'react';
-import AccountsContainer from './containers/AccountsContainer'
+import AccountContainer from './containers/AccountContainer'
 import NavBar from './components/NavBar'
 import Header from './components/Header'
 import './App.css';
@@ -24,7 +24,7 @@ class App extends React.Component {
       <div className="App">
         <NavBar />
         <Header />
-        <AccountsContainer onClick={this.handleClick} />
+        <AccountContainer onClick={this.handleClick} />
       </div>
     );
   }
