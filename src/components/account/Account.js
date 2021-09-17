@@ -5,7 +5,7 @@ import InvoicesContainer from '../../containers/InvoicesContainer'
 const Account = (props) => {
   let accountEditLink = props.account ? `/accounts/${props.account.id}/edit` : null
   return (
-    <div>
+    <div className="container">
        <h2>
         {props.account && props.account.accountname}
         <Link 
