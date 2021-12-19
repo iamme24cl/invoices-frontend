@@ -4,7 +4,7 @@ const BackButton = () => {
     let history = useHistory();
     return (
         <>
-          <button className="btn btn-dark" onClick={() => history.goBack()}>Back</button>
+          <button style={{width: "75px"}} className="btn btn-dark" onClick={() => history.goBack()}>Back</button>
         </>
     );
 };

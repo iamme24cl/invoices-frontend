@@ -1,4 +1,4 @@
-import CONSTANTS from '../utils/constants';
+import CONSTANTS from '../store/utils/constants';
 const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS
 
 export const fetchAccount = (userData)  => {

@@ -1,26 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Texturina:wght@100;400&display=swap');
-
-:root {
-  --modal-duration: 1s;
-  --primary-color: #27282e;
-  --secondary-color: ;
-  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
 
 * {
+  margin: 0;
   box-sizing: border-box;
 }
 
 body {
   background-color: #f2f2f2;
   font-family: 'Lato', sans-serif;
-  margin: 0;
-  transition: transform 0.3s ease;
-}
-
-body.show-nav {
-  /* Should be the width of the nav */
-  transform: translateX(100px);
 }
 

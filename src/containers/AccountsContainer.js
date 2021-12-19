@@ -11,7 +11,7 @@ import HomePage from '../components/HomePage';
 import './AccountContainer.css';
 
 
-class AccountContainer extends React.Component {
+class AccountsContainer extends React.Component {
 
   componentDidMount() {
     this.props.checkLoginStatus();
@@ -73,4 +73,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountContainer));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountsContainer));
