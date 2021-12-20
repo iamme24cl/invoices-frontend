@@ -6,7 +6,6 @@ import { NavBar } from "./components";
 import Routes from "./Routes";
 
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends React.Component {

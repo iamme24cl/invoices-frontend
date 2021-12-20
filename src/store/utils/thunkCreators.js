@@ -1,7 +1,7 @@
 import axios from "axios";
 import CONSTANTS from "./constants";
 import { gotAccount, setFetchingStatus, addAccount, updateAccount } from "../account";
-import { clearOnLogout } from "..";
+import { getInvoices, addInvoice, updateInvoiceInStore, deleteInvoiceFromStore } from "../invoices";
 
 const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS;
 
@@ -62,7 +62,7 @@ export const logout = () => async (dispatch) => {
     await axios.delete(`${DEV_URL}/api-keys/${tokenId}`);
     localStorage.removeItem("invoices-app-token");
     localStorage.removeItem("invoices-app-token-id");
-    dispatch(clearOnLogout());
+    dispatch(gotAccount({}));
   } catch (error) {
     console.error(error);
   } finally {
@@ -74,7 +74,7 @@ export const logout = () => async (dispatch) => {
 export const fetchInvoices = (accountId) => async (dispatch) => {
   try {
     const { data} = await axios.get(`${DEV_URL}/accounts/${accountId}/invoices`)
-    console.log(data)
+    dispatch(getInvoices(data))
   } catch (error) {
     console.error(error);
   }
