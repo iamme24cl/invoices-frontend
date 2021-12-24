@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { fetchAccount } from "./store/utils/thunkCreators";
 
 import Login from "./Login";
-import { InvoiceList } from "./components/invoice";
+import Signup from "./Signup";
+import { Home } from "./components";
+import { InvoiceDetails, InvoiceInput, InvoiceEdit } from "./components/invoice";
 
 const Routes = (props) => {
   const { account, fetchAccount } = props;
@@ -28,24 +30,28 @@ const Routes = (props) => {
 
   
   if (props.account.isFetching) {
-    return <div className="">Loading....</div>
+    return <div className="text-center mt-32">Loading....</div>
   }
 
   return (
     <>
       {errorMessage !== "" && (
-        <div className="text-center bg-danger p-3" role="alert">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-center" role="alert">
           <strong className="font-bold">Error! </strong>
           <span className="block sm:inline">{errorMessage}</span>
         </div>
       )}
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
         <Route 
           exact
           path="/"
-          render={(routerProps) => (props.account && props.account.id ? <InvoiceList /> : <Login />)}
+          render={(routerProps) => (props.account && props.account.id ? <Home /> : <Login />)}
         />
+        <Route path="/invoices/new" component={InvoiceInput} />
+        <Route path="/invoices/:id/edit" component={InvoiceEdit} />
+        <Route path="/invoices/:id" component={InvoiceDetails} />
       </Switch>
     </>
   )
@@ -54,7 +60,7 @@ const Routes = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    account: state.account
+    account: state.account,
   };
 };
 
@@ -62,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchAccount: () => {
       dispatch(fetchAccount());
-    }
+    },
   };
 };
 
