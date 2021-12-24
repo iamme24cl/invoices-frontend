@@ -1,7 +1,6 @@
 import  React from 'react'
 import {connect} from 'react-redux'
-import { addInvoice } from '../../actions/addInvoice';
-import BackButton from '../BackButton';
+import { postInvoice } from '../../store/utils/thunkCreators';
 
 class InvoiceInput extends React.Component {
 
@@ -41,10 +40,9 @@ class InvoiceInput extends React.Component {
     }
   }
 
-  handleSubmit(event) {
-    // debugger
+  async handleSubmit(event) {
     event.preventDefault();
-    this.props.addInvoice(this.state, this.props.account.id)
+    await this.props.postInvoice(this.state, this.props.account.id)
     this.setState({
       description: "",
       payment_due: "",
@@ -61,8 +59,8 @@ class InvoiceInput extends React.Component {
         }
       ]
     })
-    event.target.reset()
-    this.props.history.push(`/accounts/${this.props.account.id}/invoices`)
+    event.target.reset();
+    this.props.history.push("/");
   }
 
   addItem(event) {
@@ -82,166 +80,217 @@ class InvoiceInput extends React.Component {
     let items = this.state.items_attributes;
 
     return (
-      <div className="container">
-        <div className="row justify-content-end">
-          <div className="col-1"><BackButton /></div>
-        </div>
-        <div className="modal-container" id="modal">
-          <div className="form-modal">
-            <div className="form-header">
-              <h4>New Invoice</h4>
-            </div>
-          
-            <form className="modal-form" onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <label>Description</label>
+      <>
+        <div className="h-screen flex flex-col mt-10 sm:mt-16 items-center">
+          <h4 className='mb-6 font-bold text-lg'>New Invoice</h4>
+          <form onSubmit={this.handleSubmit} className="w-full max-w-lg p-1">
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='description'>
+                  Description
+                </label>
                 <input 
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                  id="description"
+                  name="description"
                   type="text" 
-                  value={this.state.description} 
-                  onChange={this.handleChange} 
-                  name="description" 
-                  className="form-control" 
+                  placeholder="Invoice description"
+                  value={this.state.description}
+                  onChange={this.handleChange}
                 />
               </div>
-              
-              <div className="form-group">
-                <label>Due Date</label>
+            </div>
+            
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="client-name">
+                Client Name
+              </label>
+              <input 
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+                id="client-name"
+                name="client_name" 
+                type="text" 
+                placeholder="Jane Doe" 
+                value={this.state.client_name}
+                onChange={this.handleChange}
+              />
+            </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='client-email'>
+                  Client email
+                </label>
                 <input 
-                  type="date" 
-                  value={this.state.payment_due} 
-                  onChange={this.handleChange} 
-                  name="payment_due" 
-                  className="form-control" 
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                  id="client-email"
+                  name="client_email" 
+                  type="text" 
+                  placeholder="example@mail.com" 
+                  value={this.state.client_email}
+                  onChange={this.handleChange}
                 />
               </div>
-              
-              <div className="row">
-                <div className="form-group col-sm-3">
-                  <label>Payment Terms</label><br />
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='client-address'>
+                  Client Address
+                </label>
+                <textarea
+                  rows="4" 
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                  id="client-address"
+                  name="client_address"
+                  placeholder="Street, City, State, Zip Code" 
+                  value={this.state.client_address}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='payment-terms'>
+                  Payment Terms
+                </label>
+                <div className="relative">
                   <select 
-                    name="payment_terms" 
-                    onChange={this.handleChange} 
-                    value={this.state.payment_terms}
-                    className="form-control"
+                    className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                    id="payment-terms"
+                    name="payment_terms"
+                    value={this.state.payment_terms} 
+                    onChange={this.handleChange}
                   >
-                    <option>Select</option>
+                    <option value="">Select</option>
                     <option>1</option>
                     <option>15</option>
                     <option>30</option>
                   </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                  </div>
                 </div>
-                <div className=" form-group col-sm-3">
-                  <label>Status</label><br />
+              </div>
+              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='status'>
+                  Status
+                </label>
+                <div className="relative">
                   <select 
+                    className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                    id="status"
                     name="status"
-                    value={this.state.status}  
-                    onChange={this.handleChange} 
-                    className="form-control"
+                    value={this.state.status}
+                    onChange={this.handleChange}
                   >
-                    <option>Select</option>
+                    <option value="">Select</option>
                     <option>draft</option>
                     <option>pending</option>
                     <option>paid</option>
                   </select>
-                </div>                        
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                  </div>
+                </div>
               </div>
-
-              <div className="form-group">
-                <label>Client Name</label>
+              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='payment-due'>
+                  Due Date
+                </label>
                 <input 
-                  type="text" 
-                  value={this.state.client_name} 
-                  onChange={this.handleChange} 
-                  name="client_name" 
-                  className="form-control" 
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                  id="payment-due"
+                  name="payment_due" 
+                  type="date" 
+                  value={this.state.payment_due}
+                  onChange={this.handleChange}
                 />
               </div>
-            
-              <div className="form-group">
-                <label>Client Email</label>
-                <input 
-                  type="email" 
-                  value={this.state.client_email} 
-                  onChange={this.handleChange} 
-                  name="client_email" 
-                  className="form-control" 
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Client Address</label>
-                <input 
-                  type="text" 
-                  value={this.state.client_address} 
-                  onChange={this.handleChange} 
-                  name="client_address" 
-                  className="form-control" 
-                />
-              </div>
-              
-            <div className="form-group">
-              <h3 className="items-div" >Items</h3>
-                {
-                  items.map((val, idx) => {
-                    return (
-                      <div className="row">
-                        <div className="col-sm-4">
-                          <label>Item Name</label>
-                          <input
-                            type="text"
-                            name="name"
-                            data-id={idx}
-                            value={this.state.items_attributes.name} 
-                            onChange={this.handleChange}
-                            className="form-control"
-                          />
-                        </div>
-                        <div className="col-sm-3">
-                          <label>Item Price</label>
-                          <input
-                            type="text" 
-                            name="price"
-                            data-id={idx}
-                            value={this.state.items_attributes.price}
-                            onChange={this.handleChange}
-                            className="form-control"
-                          />
-                        </div>
-                        <div className="col-sm-3">
-                          <label>Item Quantity</label>
-                          <input 
-                          type="number" 
-                          name="quantity"
-                          data-id={idx}
-                          value={this.state.items_attributes.quantity}
-                          onChange={this.handleChange}
-                            className="form-control"
-                          />
-                        </div>
-                        <div className="col-sm-2">
-                          {idx === 0 ? (
-                            <button className="btn btn-success add-btn" onClick={this.addItem}>
-                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                          </button>
-                          ) : (
-                            <button className="btn btn-danger minus-btn" onClick={() => this.deleteItem(idx)}>
-                              <i className="fa fa-minus" aria-hidden="true" />
-                            </button>
-                          )}
-                          
-                        </div>                     
-                      </div>               
-                    )
-                  })
-                }
-                <input className="cta-btn btn btn-dark submit-btn" type="submit" />     
-            </div>                 
+            </div>
+            {items.map((val, idx) => {
+              return (
+                <div className='flex flex-wrap -mx-3 mb-6' key={idx}>
+                  <div className="w-full px-3 md:w-1/3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='name'>
+                      Item Name
+                    </label>
+                    <input 
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                      id="name"
+                      data-id={idx}
+                      name="name"
+                      type="text" 
+                      placeholder="Item Name"
+                      value={this.state.items_attributes[idx].name}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="w-full px-3 md:w-1/5 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='quantity'>
+                      Quantity
+                    </label>
+                    <input 
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                      id="quantity"
+                      data-id={idx}
+                      name="quantity"
+                      type="number" 
+                      placeholder="0"
+                      value={this.state.items_attributes[idx].quantity}
+                      onChange={this.handleChange}
+                    />
+                    
+                  </div>
+                  <div className="w-full px-3 md:w-1/4 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='price'>
+                      Price
+                    </label>
+                    <input 
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                      id="price"
+                      data-id={idx}
+                      name="price"
+                      type="text" 
+                      placeholder="Price"
+                      value={this.state.items_attributes[idx].price}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="w-full px-3 md:w-1/5 mb-6 md:mb-0 flex justify-end items-center">
+                    {idx === 0 ? (
+                        <button onClick={this.addItem}>
+                          <i className="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                      ) : (
+                        <button className="btn btn-danger minus-btn" onClick={() => this.deleteItem(idx)}>
+                          <i className="fa fa-minus" aria-hidden="true" />
+                        </button>
+                      )}
+                  </div>
+                </div>
+              )
+            })}
+            <button className="bg-gray-400 hover:bg-gray-500 text-gray-800 py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+              Submit
+            </button>          
             </form>
           </div>
-        </div>
-      </div>
+        </>
     )
   }
-}
+};
 
-export default connect(null, {addInvoice})(InvoiceInput);
+const mapStateToProps = (state) => {
+  return {
+    account: state.account,
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    postInvoice: (body, accountId) => {
+      dispatch(postInvoice(body, accountId));
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InvoiceInput);
