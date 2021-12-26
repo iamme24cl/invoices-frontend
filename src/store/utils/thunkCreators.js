@@ -3,7 +3,7 @@ import CONSTANTS from "./constants";
 import { gotAccount, setFetchingStatus, addAccount, updateAccount } from "../account";
 import { getInvoices, addInvoice, updateInvoice, deleteInvoice} from "../invoices";
 
-const { API_ENDPOINTS: { DEV_URL, LIVE_URL } } = CONSTANTS;
+const { API_ENDPOINTS: { BASE } } = CONSTANTS;
 
 axios.interceptors.request.use(function (config) {
   const token = localStorage.getItem("invoices-app-token");
@@ -16,7 +16,7 @@ axios.interceptors.request.use(function (config) {
 export const fetchAccount = () => async (dispatch) => {
   dispatch(setFetchingStatus(true));
   try {
-    const { data } = await axios.get(`${DEV_URL}/api-keys`);
+    const { data } = await axios.get(`${BASE}/api-keys`);
     dispatch(gotAccount(data));
   } catch (error) {
     console.error(error);
@@ -27,7 +27,7 @@ export const fetchAccount = () => async (dispatch) => {
 
 export const login = (credentials) => async (dispatch) => {
   try {
-    const { data } = await axios.post(`${DEV_URL}/api-keys`, credentials);
+    const { data } = await axios.post(`${BASE}/api-keys`, credentials);
     localStorage.setItem("invoices-app-token", data.api_keys[data.api_keys.length - 1].token);
     localStorage.setItem("invoices-app-token-id", data.api_keys[data.api_keys.length - 1].id);
     dispatch(gotAccount(data));
@@ -39,7 +39,7 @@ export const login = (credentials) => async (dispatch) => {
 
 export const postAccount = (body) => async (dispatch) => {
   try {
-    const { data } = await axios.post(`${DEV_URL}/accounts`, body);
+    const { data } = await axios.post(`${BASE}/accounts`, body);
     localStorage.setItem("invoices-app-token", data.api_keys[data.api_keys.length - 1].token);
     localStorage.setItem("invoices-app-token-id", data.api_keys[data.api_keys.length - 1].id);
     dispatch(addAccount(data));
@@ -50,7 +50,7 @@ export const postAccount = (body) => async (dispatch) => {
 
 export const editAccount = (body, id) => async (dispatch) => {
   try {
-    const { data } = await axios.put(`${DEV_URL}/accounts/${id}`, body);
+    const { data } = await axios.put(`${BASE}/accounts/${id}`, body);
     dispatch(updateAccount(data));
   } catch (error) {
     console.error(error)
@@ -60,7 +60,7 @@ export const editAccount = (body, id) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   const tokenId = localStorage.getItem("invoices-app-token-id");
   try {
-    await axios.delete(`${DEV_URL}/api-keys/${tokenId}`);
+    await axios.delete(`${BASE}/api-keys/${tokenId}`);
     localStorage.removeItem("invoices-app-token");
     localStorage.removeItem("invoices-app-token-id");
     dispatch(gotAccount({}));
@@ -74,7 +74,7 @@ export const logout = () => async (dispatch) => {
 // INVOICE THUNK CREATORS
 export const fetchInvoices = (accountId) => async (dispatch) => {
   try {
-    const { data} = await axios.get(`${DEV_URL}/accounts/${accountId}/invoices`)
+    const { data} = await axios.get(`${BASE}/accounts/${accountId}/invoices`)
     dispatch(getInvoices(data))
   } catch (error) {
     console.error(error);
@@ -83,7 +83,7 @@ export const fetchInvoices = (accountId) => async (dispatch) => {
 
 export const postInvoice = (body, accountId) => async (dispatch) => {
   try {
-    const { data } = await axios.post(`${DEV_URL}/accounts/${accountId}/invoices`, body);
+    const { data } = await axios.post(`${BASE}/accounts/${accountId}/invoices`, body);
     dispatch(addInvoice(data));
   } catch (error) {
     console.error(error);
@@ -92,7 +92,7 @@ export const postInvoice = (body, accountId) => async (dispatch) => {
 
 export const editInvoice = (body, accountId, id) => async (dispatch) => {
   try {
-    const { data } = await axios.put(`${DEV_URL}/accounts/${accountId}/invoices/${id}`, body);
+    const { data } = await axios.put(`${BASE}/accounts/${accountId}/invoices/${id}`, body);
     dispatch(updateInvoice(data));
   } catch (error) {
     console.error(error);
@@ -101,7 +101,7 @@ export const editInvoice = (body, accountId, id) => async (dispatch) => {
 
 export const destroyInvoice = (accountId, id) => async (dispatch) => {
   try {
-    await axios.delete(`${DEV_URL}/accounts/${accountId}/invoices/${id}`);
+    await axios.delete(`${BASE}/accounts/${accountId}/invoices/${id}`);
     dispatch(deleteInvoice(id));
   } catch (error) {
     console.error(error);
