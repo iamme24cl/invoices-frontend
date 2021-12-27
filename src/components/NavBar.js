@@ -19,7 +19,7 @@ const NavBar = (props) => {
   };
 
   return (
-    <nav className="bg-gray-300 shadow-xl sm:flex sm:justify-between sm:px-5 text-black no-print -mr-3 lg:-mr-0">
+    <nav className="bg-gray-300 shadow-xl sm:flex sm:justify-between sm:px-5 text-black no-print">
       <div className="flex items:center justify-between px-5 py-3">
         <div>
           <Link className="cursor-pointer font-bold" to="/">INVOICES</Link>

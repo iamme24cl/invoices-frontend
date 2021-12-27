@@ -80,10 +80,9 @@ class InvoiceInput extends React.Component {
     let items = this.state.items_attributes;
 
     return (
-      <>
-        <div className="h-screen flex flex-col mt-10 sm:mt-16 items-center">
+        <div className="h-screen flex flex-col mt-10 sm:mt-16 items-center w-11/12">
           <h4 className='mb-6 font-bold text-lg'>New Invoice</h4>
-          <form onSubmit={this.handleSubmit} className="w-full max-w-lg p-1 pb-16">
+          <form onSubmit={this.handleSubmit} className="w-full ml-5 lg:ml-0 max-w-lg p-1 pb-16">
             <div className="flex flex-wrap -ml-3 -mr-5 lg:-mx-4 mb-6">
               <div className="w-full px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='description'>
@@ -274,7 +273,7 @@ class InvoiceInput extends React.Component {
             </button>          
             </form>
           </div>
-        </>
+        
     )
   }
 };
