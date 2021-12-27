@@ -63,8 +63,8 @@ class InvoiceEdit extends React.Component {
       <>
         <div className="h-screen flex flex-col mt-10 sm:mt-16 items-center">
           <h4 className='mb-6 font-bold text-lg'>Edit Invoice</h4>
-          <form onSubmit={this.handleSubmit} className="w-full max-w-lg p-1">
-            <div className="flex flex-wrap -mx-3 mb-6">
+          <form onSubmit={this.handleSubmit} className="w-full max-w-lg p-1 pb-16">
+            <div className="flex flex-wrap -ml-3 -mr-5 lg:-mx-4 mb-6">
               <div className="w-full px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='description'>
                   Description
@@ -81,7 +81,7 @@ class InvoiceEdit extends React.Component {
               </div>
             </div>
           
-            <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="flex flex-wrap -ml-3 -mr-5 lg:-mx-4 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="client-name">
                   Client Name
@@ -113,7 +113,7 @@ class InvoiceEdit extends React.Component {
               </div>
             </div>
 
-            <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="flex flex-wrap -ml-3 -mr-5 lg:-mx-4 mb-6">
               <div className="w-full px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='client-address'>
                   Client Address
@@ -130,7 +130,7 @@ class InvoiceEdit extends React.Component {
               </div>
             </div>
 
-            <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="flex flex-wrap -ml-3 -mr-5 lg:-mx-4 mb-6">
               <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='payment-terms'>
                   Payment Terms
@@ -191,7 +191,7 @@ class InvoiceEdit extends React.Component {
             </div>
             {items.map((val, idx) => {
               return (
-                <div className='flex flex-wrap -mx-3 mb-6' key={`${idx}-items`}>
+                <div className='flex flex-wrap -ml-3 -mr-5 lg:-mx-4 mb-6' key={`${idx}-items`}>
                   <div className="w-full px-3 md:w-1/3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor='name'>
                       Item Name
