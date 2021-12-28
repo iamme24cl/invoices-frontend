@@ -25,7 +25,7 @@ const Invoice = (props) => {
           <li className="bg-gray-100 border border-gray-300 mb-1 px-2 py-1 rounded" key={`${invoice.id}-id`}><span className="mr-5 font-bold">Invoice#:</span> {invoice.id}{invoice.random_code}</li>
           <li className="bg-gray-100 border border-gray-300 mb-1 px-2 py-1 rounded" key={`${invoice.id}-description`}><span className="mr-5 font-bold">Description:</span> {invoice.description}</li>
           <li className="bg-gray-100 border border-gray-300 mb-1 px-2 py-1 rounded" key={`${invoice.id}-email`}><span className="mr-5 font-bold">Client Email:</span> {invoice.client_email}</li>
-          <li className="bg-gray-100 border border-gray-300 mb-1 px-2 py-1 rounded" key={`${invoice.id}-total`}><span className="mr-5 font-bold">Invoice Total:</span> ${invoice.invoice_total}</li>
+          <li className="bg-gray-100 border border-gray-300 mb-1 px-2 py-1 rounded" key={`${invoice.id}-total`}><span className="mr-5 font-bold">Invoice Total:</span> ${invoice.invoice_total.toFixed(2)}</li>
           <Link to={`/invoices/${invoice.id}/edit`}><li className="bg-gray-100 hover:bg-gray-300 cursor-pointer border border-gray-300 mb-1 px-2 py-1 rounded" key={`${invoice.id}-status`}>
             <span className="mr-5 font-bold">Status:</span> 
             <span className={`${invoice.status === "paid" ? "text-green-700" : invoice.status === "draft" ? "text-yellow-600" : "text-red-700"}`}>
