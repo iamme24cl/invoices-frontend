@@ -11,10 +11,6 @@ import './InvoiceDetails.css';
 const InvoiceDetails = (props) => {
   const { account, invoices, fetchInvoices, destroyInvoice, history } = props;
   
-  useEffect(() => {
-    fetchInvoices(account.id);
-  }, [fetchInvoices, account.id]);
-
   const invoice = invoices.find(invoice => invoice.id.toString() === props.match.params.id);
   const address = invoice && invoice.account.address.split(", ");
   const clientAddress = invoice && invoice.client_address.split(", ");
@@ -123,7 +119,7 @@ const InvoiceDetails = (props) => {
               </div>
               
               <div className="invoice-price-right">
-                  <small>TOTAL</small> <span className="f-w-600">${invoice.invoice_total}</span>
+                  <small>TOTAL</small> <span className="f-w-600">${invoice.invoice_total.toFixed(2)}</span>
               </div>
             </div>
             {/* <!-- end invoice-price --> */}
