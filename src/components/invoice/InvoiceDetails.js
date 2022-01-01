@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import html2pdf from 'html2pdf.js';
-import { fetchInvoices, destroyInvoice } from '../../store/utils/thunkCreators';
+import { destroyInvoice } from '../../store/utils/thunkCreators';
 import { Item } from "../item";
 
 import './InvoiceDetails.css';
 
 const InvoiceDetails = (props) => {
-  const { account, invoices, fetchInvoices, destroyInvoice, history } = props;
+  const { account, invoices, destroyInvoice, history } = props;
   
   const invoice = invoices.find(invoice => invoice.id.toString() === props.match.params.id);
   const address = invoice && invoice.account.address.split(", ");
@@ -156,9 +156,6 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchInvoices: (accountId) => {
-      dispatch(fetchInvoices(accountId));
-    },
     destroyInvoice: (accountId, id) => {
       dispatch(destroyInvoice(accountId, id));
     }
