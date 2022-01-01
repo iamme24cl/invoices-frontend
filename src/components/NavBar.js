@@ -22,7 +22,7 @@ const NavBar = (props) => {
     <nav className="bg-gray-300 shadow-xl sm:flex sm:justify-between sm:px-5 text-black no-print">
       <div className="flex items:center justify-between px-5 py-3">
         <div>
-          <Link className="cursor-pointer font-bold" to="/">INVOICES</Link>
+          <Link className="cursor-pointer font-bold" to="/home">INVOICES</Link>
         </div>
         <div className="sm:hidden">
           <button type="button" onClick={toggleNavbar} className="text-black hover:gray-500 focus:text-gray-500 focus:outline-none block">
@@ -42,7 +42,7 @@ const NavBar = (props) => {
         }
         {account.id &&
           <> 
-            <Link to="/" className="block px-3 py-1 text-black  font-semibold rounded hover:bg-gray-400">Home</Link>
+            <Link to="/home" className="block px-3 py-1 text-black  font-semibold rounded hover:bg-gray-400">Home</Link>
             <button onClick={handleLogout} className="block px-3 py-1 text-black  font-semibold rounded hover:bg-gray-400">Logout</button>
           </>
         }
