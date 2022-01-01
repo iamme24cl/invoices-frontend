@@ -60,7 +60,7 @@ class InvoiceInput extends React.Component {
       ]
     })
     event.target.reset();
-    this.props.history.push("/");
+    this.props.history.push("/home");
   }
 
   addItem(event) {
