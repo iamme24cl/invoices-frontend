@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import { fetchInvoices } from "../store/utils/thunkCreators";
 
 import { Invoices } from "../components/invoice"
 
 const Home = (props) => {
-  const { account, invoices, fetchInvoices } = props;
+  const { account, invoices } = props;
   
-  useEffect(() => {
-    fetchInvoices(account.id);
-  }, [fetchInvoices, account.id]);
-
   if (!account.id) {
     return <Redirect to="/login" />
   }
@@ -35,12 +30,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchInvoices: (accountId) => {
-      dispatch(fetchInvoices(accountId))
-    }
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, null)(Home);

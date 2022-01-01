@@ -1,7 +1,7 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchAccount } from "./store/utils/thunkCreators";
+import { fetchAccount, fetchInvoices } from "./store/utils/thunkCreators";
 
 import Login from "./Login";
 import Signup from "./Signup";
@@ -9,7 +9,7 @@ import { Home } from "./components";
 import { InvoiceDetails, InvoiceInput, InvoiceEdit } from "./components/invoice";
 
 const Routes = (props) => {
-  const { account, fetchAccount } = props;
+  const { account, fetchAccount, fetchInvoices } = props;
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -26,7 +26,11 @@ const Routes = (props) => {
     } else {
       setErrorMessage("");
     }
-  }, [account.error])
+  }, [account.error]);
+
+  useEffect(() => {
+    fetchInvoices(account.id);
+  }, [fetchInvoices, account.id]);
 
   
   if (props.account.isFetching) {
@@ -49,6 +53,7 @@ const Routes = (props) => {
           path="/"
           render={(routerProps) => (props.account && props.account.id ? <Home /> : <Login />)}
         />
+        <Route path="/home" component={Home} />
         <Route path="/invoices/new" component={InvoiceInput} />
         <Route path="/invoices/:id/edit" component={InvoiceEdit} />
         <Route path="/invoices/:id" component={InvoiceDetails} />
@@ -69,6 +74,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchAccount: () => {
       dispatch(fetchAccount());
     },
+    fetchInvoices: (accountId) => {
+      dispatch(fetchInvoices(accountId));
+    }
   };
 };
 
