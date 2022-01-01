@@ -6,7 +6,7 @@ class InvoiceEdit extends React.Component {
 
   constructor(props) {
     super(props);
-    const invoice = this.props.invoices && this.props.invoices.find(invoice => invoice.id == this.props.match.params.id);
+    const invoice = this.props.invoices && this.props.invoices.find(invoice => invoice.id.toString() === this.props.match.params.id.toString());
     this.state = {
       description: invoice.description,
       payment_due: invoice.payment_due,
@@ -36,7 +36,7 @@ class InvoiceEdit extends React.Component {
   }
 
   async handleSubmit(event) {
-    const id = this.props.invoices.find(invoice => invoice.id == this.props.match.params.id).id
+    const id = this.props.invoices.find(invoice => invoice.id.toString() === this.props.match.params.id.toString()).id
     event.preventDefault();
     await this.props.editInvoice(this.state, this.props.account.id, id)
 
