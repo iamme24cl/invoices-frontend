@@ -7,7 +7,7 @@ This application creates and manages Invoices for an account.
 
 This is the front end. Here is the link to the back end https://github.com/iamme24cl/invoices-backend
 
-Live demo site hosted [_here_](https://my-invoices.netlify.app/). Demo Video hosted [_here_](https://www.loom.com/share/4c4f5df831e14e61827c769807e2b9e4?sharedAppSource=personal_library).
+Demo Video hosted [_here_](https://www.loom.com/share/4c4f5df831e14e61827c769807e2b9e4?sharedAppSource=personal_library).
 
 ## ScreenShots :sunny:
 ##### Login Page
